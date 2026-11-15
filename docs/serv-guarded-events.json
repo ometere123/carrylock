@@ -1,0 +1,20 @@
+[
+  {
+    "equipmentId": "PSV-416",
+    "permitId": null,
+    "type": "RELIEF_BARRIER",
+    "status": "ACTIVE",
+    "shiftId": "s1",
+    "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+    "confidence": "HIGH"
+  },
+  {
+    "equipmentId": "PSV-416",
+    "permitId": null,
+    "type": "RELIEF_BARRIER",
+    "status": "CLOSURE_CLAIM",
+    "shiftId": "s2",
+    "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+    "confidence": "HIGH"
+  }
+]
