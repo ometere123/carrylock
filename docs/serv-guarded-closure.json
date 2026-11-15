@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-11-15T23:37:17.087Z",
+  "scenarioId": "closure-verified",
+  "fixtureVersion": "1.0.0",
+  "status": "completed",
+  "attempted": true,
+  "cacheHit": false,
+  "httpStatus": 200,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "requestedModel": "gpt-5.4-mini",
+  "requestId": null,
+  "completionId": "chatcmpl-Eke4lMFW0ndM8pONDkatlYGcJgh94",
+  "latencyMs": 10976,
+  "finishReason": "stop",
+  "usage": {
+    "inputTokens": 1166,
+    "outputTokens": 219,
+    "totalTokens": 1385,
+    "reportedCostUsd": null,
+    "estimatedListCostUsd": 0.00248
+  },
+  "promptVersion": "carrylock.extract.v2",
+  "schemaVersion": "carrylock_handover_events_v1",
+  "expectedVerdict": "NO_CONFLICT_FOUND",
+  "actualVerdict": "NO_CONFLICT_FOUND",
+  "obligationMatch": true,
+  "findingMatch": true,
+  "groundedShiftEvents": 2
+}

@@ -1,0 +1,5 @@
+evidence/browser/
+tests/
+*.tsbuildinfo
+.carrylock/
+.env*

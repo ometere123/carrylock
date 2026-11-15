@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "carrylock.review-receipt.v1",
+  "timestamp": "2026-11-15T23:40:09.184Z",
+  "inputHashes": {
+    "algorithm": "SHA-256",
+    "encoding": "UTF-8 canonical JSON; object keys sorted; array order preserved",
+    "dataset": "0a30c7045c96daa31fbae66fe33d7f5d4a1633938da9956d265d4489384e64d9",
+    "shifts": [
+      {
+        "id": "s1",
+        "hash": "99ae67e766435f5b72fb00e3ba32399909ece5c056f35a85bf21c46af6c9ffb9",
+        "notesHash": "76c365e6bc34d25ef1fd52371b20fcc4490ab235c29d18b0c3039ef9aa7941d4"
+      },
+      {
+        "id": "s2",
+        "hash": "25118f4c1c59aca2a3522ff0a8325279c9b3b8ab949ce045ed5fdb3bddaa6db4",
+        "notesHash": "3afa50d72c8c39de4a4c5964eaa5abedf597fd5a7efe347167cb1a9f837e315c"
+      },
+      {
+        "id": "s3",
+        "hash": "ff09efd5cfd4fc129103eb855e48b86e21ff2268dc38ff1b0e7bda40b50cb5a4",
+        "notesHash": "3cef688053e3cd256c567d7e1c00cab799c3b3637d2e8005f654b6d2275a816f"
+      }
+    ],
+    "equipment": "a9c180448997753cb49385a76c8cd05dcdc3efd236e0bff9563bb8ff0c1088a2",
+    "register": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "action": "8af71ca638a59643e62f5b5508d38d06a150b8c13569d42e6c3d63b845257ae1"
+  },
+  "action": {
+    "description": "Review a proposed restart that depends on PSV-204.",
+    "equipmentIds": [
+      "PSV-204"
+    ],
+    "permitIds": []
+  },
+  "extraction": {
+    "mode": "synthetic_fixture",
+    "fixtureId": "relief-reinstatement",
+    "fixtureVersion": "1.0.0"
+  },
+  "extractedEvents": [
+    {
+      "equipmentId": "PSV-204",
+      "type": "RELIEF_BARRIER",
+      "status": "ACTIVE",
+      "shiftId": "s1",
+      "quote": "The relief valve PSV-204 was removed for inspection. Reinstatement evidence is outstanding.",
+      "permitId": null,
+      "followUp": "Locate the reinstatement record.",
+      "confidence": "HIGH",
+      "evidence": {
+        "source": "shift",
+        "sourceId": "s1",
+        "start": 26,
+        "end": 117,
+        "line": 2
+      }
+    },
+    {
+      "equipmentId": "PSV-204",
+      "type": "RELIEF_BARRIER",
+      "status": "ACTIVE",
+      "shiftId": "s2",
+      "quote": "PSV-204 unavailable; the work order remains with inspection.",
+      "permitId": null,
+      "followUp": "Verify reinstatement and authorized confirmation.",
+      "confidence": "HIGH",
+      "evidence": {
+        "source": "shift",
+        "sourceId": "s2",
+        "start": 0,
+        "end": 60,
+        "line": 1
+      }
+    }
+  ],
+  "extractedCandidateCount": 2,
+  "obligations": [
+    {
+      "id": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+      "equipmentId": "PSV-204",
+      "permitId": null,
+      "type": "RELIEF_BARRIER",
+      "state": "OPEN",
+      "firstShiftId": "s1",
+      "lastMentionShiftId": "s2",
+      "evidence": [
+        {
+          "equipmentId": "PSV-204",
+          "type": "RELIEF_BARRIER",
+          "status": "ACTIVE",
+          "shiftId": "s1",
+          "quote": "The relief valve PSV-204 was removed for inspection. Reinstatement evidence is outstanding.",
+          "permitId": null,
+          "followUp": "Locate the reinstatement record.",
+          "confidence": "HIGH",
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s1",
+            "start": 26,
+            "end": 117,
+            "line": 2
+          }
+        },
+        {
+          "equipmentId": "PSV-204",
+          "type": "RELIEF_BARRIER",
+          "status": "ACTIVE",
+          "shiftId": "s2",
+          "quote": "PSV-204 unavailable; the work order remains with inspection.",
+          "permitId": null,
+          "followUp": "Verify reinstatement and authorized confirmation.",
+          "confidence": "HIGH",
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s2",
+            "start": 0,
+            "end": 60,
+            "line": 1
+          }
+        }
+      ],
+      "missingEvidence": [
+        "PSV-204 relief barrier requires REINSTATEMENT_RECORD and confirmation by SHIFT_SUPERVISOR or SAFETY_AUTHORITY."
+      ],
+      "followUp": "Verify reinstatement and authorized confirmation."
+    }
+  ],
+  "timeline": [
+    {
+      "shiftId": "s1",
+      "label": "Day shift",
+      "obligations": [
+        {
+          "id": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+          "state": "OPEN",
+          "omitted": false
+        }
+      ],
+      "transitions": [
+        {
+          "obligationId": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+          "from": null,
+          "to": "OPEN",
+          "rule": "ACTIVE_OBSERVED"
+        }
+      ]
+    },
+    {
+      "shiftId": "s2",
+      "label": "Swing shift",
+      "obligations": [
+        {
+          "id": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+          "state": "OPEN",
+          "omitted": false
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "shiftId": "s3",
+      "label": "Night shift",
+      "obligations": [
+        {
+          "id": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+          "state": "OPEN",
+          "omitted": true
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "findings": [
+    {
+      "code": "OMITTED_FROM_HANDOVER",
+      "kind": "OMISSION",
+      "title": "PSV-204 relief barrier omitted",
+      "detail": "No grounded mention in Night shift. The obligation carries forward from Swing shift.",
+      "shiftId": "s3",
+      "obligationId": "[\"PSV-204\",\"RELIEF_BARRIER\",null]",
+      "evidence": [
+        {
+          "equipmentId": "PSV-204",
+          "type": "RELIEF_BARRIER",
+          "status": "ACTIVE",
+          "shiftId": "s2",
+          "quote": "PSV-204 unavailable; the work order remains with inspection.",
+          "permitId": null,
+          "followUp": "Verify reinstatement and authorized confirmation.",
+          "confidence": "HIGH",
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s2",
+            "start": 0,
+            "end": 60,
+            "line": 1
+          }
+        }
+      ]
+    }
+  ],
+  "rulesTriggered": [
+    "ACTIVE_OBSERVED",
+    "CARRIED_FORWARD",
+    "OMITTED_FROM_HANDOVER",
+    "ACTION_RESTRICTION"
+  ],
+  "actionReview": {
+    "matchedObligationIds": [
+      "[\"PSV-204\",\"RELIEF_BARRIER\",null]"
+    ],
+    "blockingObligationIds": [
+      "[\"PSV-204\",\"RELIEF_BARRIER\",null]"
+    ],
+    "unresolvedObligationIds": []
+  },
+  "verdict": "HOLD",
+  "unknownOrMissingEvidence": [
+    "PSV-204 relief barrier requires REINSTATEMENT_RECORD and confirmation by SHIFT_SUPERVISOR or SAFETY_AUTHORITY."
+  ],
+  "advisory": "Prototype review only. Qualified site personnel retain responsibility for any operating decision."
+}

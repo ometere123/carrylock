@@ -1,0 +1,36 @@
+{
+  "name": "carrylock",
+  "version": "0.1.0",
+  "description": "Evidence-grounded shift handover reconciliation",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "eval:engine": "tsx scripts/evaluate-engine.ts",
+    "eval:serv": "tsx --env-file-if-exists=.env.local scripts/evaluate-serv.ts"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "lucide-react": "^0.577.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "typescript": "^5.9",
+    "tsx": "^4.20",
+    "playwright": "^1.61"
+  }
+}
