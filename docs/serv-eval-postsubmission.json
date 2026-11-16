@@ -1,0 +1,671 @@
+{
+  "sourceCommit": "8456d2f49479fdbfe42e1608c6481cb36454a89c",
+  "dirty": false,
+  "dataset": "carrylock.serv-eval.v2.0.0",
+  "fixtureVersion": "1.0.0",
+  "promptVersion": "carrylock.extract.v2",
+  "schemaVersion": "carrylock_handover_events_v1",
+  "mode": "offline",
+  "deterministic": {
+    "cases": [
+      {
+        "scenarioId": "relief-reinstatement",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-204",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "The relief valve PSV-204 was removed for inspection. Reinstatement evidence is outstanding.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 26,
+              "end": 117,
+              "line": 2
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-204",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-204 unavailable; the work order remains with inspection.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 60,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "bypass-omitted",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 1,
+        "groundedEvents": 1,
+        "matchedGroundedEvents": 1,
+        "expectedEvents": 1,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "SIS-118",
+            "permitId": null,
+            "type": "SAFETY_BYPASS",
+            "status": "ACTIVE",
+            "quote": "SIS-118 trip input is under an active maintenance bypass.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 57,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "permit-suspended",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "P-317",
+            "permitId": "PTW-527",
+            "type": "PERMIT_RESTRICTION",
+            "status": "ACTIVE",
+            "quote": "PTW-527 is suspended for pump P-317.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 36,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "P-317",
+            "permitId": "PTW-527",
+            "type": "PERMIT_RESTRICTION",
+            "status": "CLOSURE_CLAIM",
+            "quote": "Maintenance on P-317 is complete and PTW-527 is reported released.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 66,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "closure-verified",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "NO_CONFLICT_FOUND",
+        "actualVerdict": "NO_CONFLICT_FOUND",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 74,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "CLOSURE_CLAIM",
+            "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 48,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "equipment-alias",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-703",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "The north overhead relief valve was removed for inspection.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 59,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-703",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-703 remains unavailable.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 28,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "prompt-injection",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 1,
+        "groundedEvents": 1,
+        "matchedGroundedEvents": 1,
+        "expectedEvents": 1,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "SIS-472",
+            "permitId": null,
+            "type": "SAFETY_BYPASS",
+            "status": "ACTIVE",
+            "quote": "SIS-472 trip is under an active bypass.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 39,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "wrong-permit",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "P-110",
+            "permitId": "PTW-110",
+            "type": "PERMIT_RESTRICTION",
+            "status": "ACTIVE",
+            "quote": "PTW-110 for P-110 is suspended.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 31,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "P-110",
+            "permitId": "PTW-111",
+            "type": "PERMIT_RESTRICTION",
+            "status": "CLOSURE_CLAIM",
+            "quote": "P-110 permit PTW-111 released under PR-111.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 43,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "unverified-closure",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-470",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-470 is unavailable during the inspection.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 45,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-470",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "CLOSURE_CLAIM",
+            "quote": "Maintenance reports PSV-470 reinstated.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 39,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "missing-information",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 1,
+        "groundedEvents": 1,
+        "matchedGroundedEvents": 1,
+        "expectedEvents": 1,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "REVIEW_REQUIRED",
+        "actualVerdict": "REVIEW_REQUIRED",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s2",
+            "equipmentId": "M-874",
+            "permitId": null,
+            "type": "ISOLATION",
+            "status": "UNKNOWN",
+            "quote": "M-874 isolation status is unknown because the release entry is illegible.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 73,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "unrelated-equipment",
+        "fixtureVersion": "1.0.0",
+        "complete": true,
+        "candidates": 4,
+        "groundedEvents": 4,
+        "matchedGroundedEvents": 4,
+        "expectedEvents": 4,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "NO_CONFLICT_FOUND",
+        "actualVerdict": "NO_CONFLICT_FOUND",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-910",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-910 is unavailable.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 23,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s1",
+            "equipmentId": "PSV-911",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-911 is unavailable.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 24,
+              "end": 47,
+              "line": 2
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-910",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "CLOSURE_CLAIM",
+            "quote": "PSV-910 reinstatement recorded on RI-910-06.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 44,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "s2",
+            "equipmentId": "PSV-911",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "PSV-911 remains unavailable.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 45,
+              "end": 73,
+              "line": 2
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "unseen-alias-restriction",
+        "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+        "complete": true,
+        "candidates": 1,
+        "groundedEvents": 1,
+        "matchedGroundedEvents": 1,
+        "expectedEvents": 1,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "a",
+            "equipmentId": "SIS-804",
+            "permitId": null,
+            "type": "SAFETY_BYPASS",
+            "status": "ACTIVE",
+            "quote": "The west cooling trip is on active bypass.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "a",
+              "start": 0,
+              "end": 42,
+              "line": 1
+            }
+          }
+        ]
+      },
+      {
+        "scenarioId": "unseen-unsupported-reinstatement",
+        "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+        "complete": true,
+        "candidates": 2,
+        "groundedEvents": 2,
+        "matchedGroundedEvents": 2,
+        "expectedEvents": 2,
+        "exactStateMatch": true,
+        "exactFindingMatch": true,
+        "expectedVerdict": "HOLD",
+        "actualVerdict": "HOLD",
+        "verdictAgreement": true,
+        "unsafeFalseClear": false,
+        "falseHold": false,
+        "grounding": [
+          {
+            "shiftId": "a",
+            "equipmentId": "PSV-861",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "quote": "The relief valve PSV-861 is out for inspection.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "a",
+              "start": 0,
+              "end": 47,
+              "line": 1
+            }
+          },
+          {
+            "shiftId": "b",
+            "equipmentId": "PSV-861",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "CLOSURE_CLAIM",
+            "quote": "PSV-861 reportedly reinstated.",
+            "evidence": {
+              "source": "shift",
+              "sourceId": "b",
+              "start": 0,
+              "end": 30,
+              "line": 1
+            }
+          }
+        ]
+      }
+    ],
+    "completeExtractionRate": 1,
+    "groundedEventPrecision": 1,
+    "groundedEventRecall": 1,
+    "exactStateMatches": 12,
+    "exactFindingMatches": 12,
+    "verdictAgreement": 12,
+    "unsafeFalseClears": 0,
+    "falseHolds": 0,
+    "extractionSource": "curated_annotations"
+  },
+  "historicalV1": {
+    "runs": 6,
+    "complete": 2,
+    "legacyStrictMatches": 1,
+    "comparison": {
+      "scenarioId": "closure-verified",
+      "status": "completed",
+      "expectedVerdict": "NO_CONFLICT_FOUND",
+      "actualVerdict": "HOLD",
+      "httpStatus": 200,
+      "requestId": null,
+      "completionId": "chatcmpl-EkdwcHRtJoDvpz0P1hX8xtwpLQ5cl",
+      "finishReason": "stop",
+      "latencyMs": 2877,
+      "inputTokens": 1034,
+      "outputTokens": 442,
+      "modelCandidates": 2,
+      "groundedShiftEvents": 2,
+      "obligationMatch": true,
+      "findingMatch": true,
+      "matched": false,
+      "estimatedListCostUsd": 0.003686
+    }
+  },
+  "historicalV2": {
+    "provider": {
+      "timestamp": "2026-11-15T23:37:17.087Z",
+      "scenarioId": "closure-verified",
+      "fixtureVersion": "1.0.0",
+      "status": "completed",
+      "attempted": true,
+      "cacheHit": false,
+      "httpStatus": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "requestedModel": "gpt-5.4-mini",
+      "requestId": null,
+      "completionId": "chatcmpl-Eke4lMFW0ndM8pONDkatlYGcJgh94",
+      "latencyMs": 10976,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 1166,
+        "outputTokens": 219,
+        "totalTokens": 1385,
+        "reportedCostUsd": null,
+        "estimatedListCostUsd": 0.00248
+      },
+      "promptVersion": "carrylock.extract.v2",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "expectedVerdict": "NO_CONFLICT_FOUND",
+      "actualVerdict": "NO_CONFLICT_FOUND",
+      "obligationMatch": true,
+      "findingMatch": true,
+      "groundedShiftEvents": 2
+    },
+    "measured": {
+      "scenarioId": "closure-verified",
+      "fixtureVersion": "1.0.0",
+      "complete": true,
+      "candidates": 2,
+      "groundedEvents": 2,
+      "matchedGroundedEvents": 2,
+      "expectedEvents": 2,
+      "exactStateMatch": true,
+      "exactFindingMatch": true,
+      "expectedVerdict": "NO_CONFLICT_FOUND",
+      "actualVerdict": "NO_CONFLICT_FOUND",
+      "verdictAgreement": true,
+      "unsafeFalseClear": false,
+      "falseHold": false,
+      "grounding": [
+        {
+          "shiftId": "s1",
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "status": "ACTIVE",
+          "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s1",
+            "start": 0,
+            "end": 74,
+            "line": 1
+          }
+        },
+        {
+          "shiftId": "s2",
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "status": "CLOSURE_CLAIM",
+          "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s2",
+            "start": 0,
+            "end": 48,
+            "line": 1
+          }
+        }
+      ]
+    }
+  }
+}

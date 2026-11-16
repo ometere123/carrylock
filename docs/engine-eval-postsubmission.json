@@ -1,0 +1,150 @@
+{
+  "fixtureVersion": "1.0.0",
+  "inputs": "Versioned synthetic notes and curated event annotations. This measures decision logic separately from live extraction.",
+  "baseline": "Looks only at relevant latest-shift events. Active means HOLD, explicit unknown means REVIEW_REQUIRED, and missing or claimed closure means NO_CONFLICT_FOUND. The register variant also checks active register entries for that same shift.",
+  "reconciliation": {
+    "correctVerdicts": 16,
+    "total": 16,
+    "expectedHoldsCalledClear": []
+  },
+  "latestNotesOnly": {
+    "correctVerdicts": 8,
+    "total": 16,
+    "expectedHoldsCalledClear": [
+      "relief-reinstatement",
+      "bypass-omitted",
+      "permit-suspended",
+      "isolation-omitted",
+      "unverified-closure",
+      "wrong-permit",
+      "prompt-injection",
+      "unauthorized-confirmation"
+    ]
+  },
+  "latestNotesAndRegister": {
+    "correctVerdicts": 10,
+    "total": 16,
+    "expectedHoldsCalledClear": [
+      "relief-reinstatement",
+      "isolation-omitted",
+      "unverified-closure",
+      "wrong-permit",
+      "prompt-injection",
+      "unauthorized-confirmation"
+    ]
+  },
+  "cases": [
+    {
+      "id": "relief-reinstatement",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "bypass-omitted",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "permit-suspended",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "closure-verified",
+      "expected": "NO_CONFLICT_FOUND",
+      "reconciliation": "NO_CONFLICT_FOUND",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "open-carried",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "HOLD",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "isolation-omitted",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "contradictory-closure",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "HOLD",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "unverified-closure",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "duplicate-mentions",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "HOLD",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "equipment-alias",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "HOLD",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "unrelated-equipment",
+      "expected": "NO_CONFLICT_FOUND",
+      "reconciliation": "NO_CONFLICT_FOUND",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "wrong-permit",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "missing-information",
+      "expected": "REVIEW_REQUIRED",
+      "reconciliation": "REVIEW_REQUIRED",
+      "notesOnly": "REVIEW_REQUIRED",
+      "withRegister": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "prompt-injection",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    },
+    {
+      "id": "active-restart",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "HOLD",
+      "withRegister": "HOLD"
+    },
+    {
+      "id": "unauthorized-confirmation",
+      "expected": "HOLD",
+      "reconciliation": "HOLD",
+      "notesOnly": "NO_CONFLICT_FOUND",
+      "withRegister": "NO_CONFLICT_FOUND"
+    }
+  ]
+}
