@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-16T06:40:56.646Z",
+  "scope": "isolated budget-test key in existing Upstash",
+  "sharedLifetimeLimit": 76,
+  "reserved": 5,
+  "ordinaryAdmissionLimit": 71,
+  "accountedCalls": 71,
+  "accountedUsd": 0.405879,
+  "providerRequests": 0,
+  "attempted": false,
+  "providerStatus": "rate_limited",
+  "verdict": "REVIEW_REQUIRED",
+  "testLedgerRecords": 0,
+  "sharedLedgerUnchanged": true,
+  "testKeyExpirySeconds": 3600
+}

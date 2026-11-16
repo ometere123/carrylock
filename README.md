@@ -49,14 +49,15 @@ npm run build
 npm run eval:engine
 ```
 
-The test suite never calls OpenServ. The manually invoked `npm run eval:serv` is a real, metered evaluation; see the evaluation report before running it.
+The test suite and `npm run eval:serv` run offline. The `--live` option for synthetic evaluation requires verified provider credits and the locked local ledger. Public paid inference on Vercel requires shared Redis and its own enforced ceiling. See the [SERV recovery report](docs/SERV-RECOVERY.md).
 
 ## Usage controls
 
 | Setting | Default / purpose |
 | --- | --- |
 | `SERV_LIVE_ENABLED` | Set to `1`. Credentials and a working budget ledger are also required. |
-| `SERV_DEV_MAX_CALLS` | 20 outbound attempts on the configured ledger, including failures and timeouts. |
+| `SERV_DEV_MAX_CALLS` | Local-only lifetime ceiling, including failures and timeouts. |
+| `SERV_SHARED_MAX_CALLS` | Explicit lifetime ceiling for the shared Redis ledger, including historical attempts and the five reserved slots. Defaults to zero. |
 | `SERV_MAX_SPEND_USD` | $1.00 estimated reservation ceiling; provider charges can differ. |
 | `SERV_LIVE_MAX_PER_HOUR` | Three analyses per IP over a rolling hour; shared addresses may share quota. |
 | `SERV_FINAL_DEMO_LOCAL` / `SERV_FINAL_DEMO_TOKEN` | Explicit local / trusted server authorization for the five reserved slots. |
@@ -67,7 +68,7 @@ Each admitted analysis makes at most one provider call, with low reasoning effor
 
 ## Evaluation and product model
 
-On 16 versioned synthetic verdict cases, full reconciliation matched 16/16 compared with 8/16 for latest notes alone and 10/16 for latest notes plus latest-shift register entries. These evaluations use curated event annotations. Authenticated SERV tests separately measured mixed live extraction results, including rejected evidence. The [evaluation report](docs/EVALUATION.md) records checks, failures, latency and estimated cost.
+On 16 versioned synthetic verdict cases, full reconciliation matched 16/16 compared with 8/16 for latest notes alone and 10/16 for latest notes plus latest-shift register entries. These evaluations use curated event annotations. On the same 12-case synthetic SERV suite, v2 matched 10/12 and the v3 passage candidate matched 6/12. The selected v2.2 matched 12/12 in each of two fresh authenticated runs with zero unsafe false clears and false holds. One separate targeted v2.2 isolation retest still produced an extra ungrounded event. Validation rejected it and returned REVIEW_REQUIRED. Synthetic benchmarks do not establish accuracy on real industrial records. [Historical evaluation](docs/EVALUATION.md) · [Reproduction commands and failure analysis](docs/SERV-RECOVERY.md#recovery-and-reproduction) · [Saved completions and metrics](docs/serv-recovery-results.json) · [Preview verification](docs/PREVIEW-RELEASE.md).
 
 Revenue model: a site-level subscription for industrial operations teams, based on the number of shift teams and retention needs. Customers would pay for handover evidence reconciliation and audit receipt workflows. A site pilot would require domain validation, verified register integration and operational acceptance before use on real decisions.
 

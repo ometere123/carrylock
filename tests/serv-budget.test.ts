@@ -128,3 +128,117 @@ test("never submits parallel identical requests more than once", async (t) => {
   assert.equal(fetchMock.mock.callCount(), 1);
   assert.equal(results.filter((result) => result.audit.attempted).length, 1);
 });
+
+test("requires an explicit shared allowance and preserves historical usage in Redis", async (t) => {
+  const { fetchMock } = await setUp(t, {
+    SERV_BUDGET_REDIS_URL: "https://mock-redis.invalid",
+    SERV_BUDGET_REDIS_TOKEN: "mock-token",
+    SERV_SHARED_MAX_CALLS: "",
+    SERV_BUDGET_USED_CALLS: "17",
+    SERV_BUDGET_USED_USD: "0.26",
+    VERCEL: "1",
+  });
+  const provider = fetchMock.mock.calls;
+  let ledger: string | null = null;
+  let calls = 0;
+  t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    if (String(url) !== "https://mock-redis.invalid/") {
+      calls++;
+      return Response.json({
+        id: "mock-shared-completion", model: "mock-model",
+        choices: [{ finish_reason: "stop", message: { content: JSON.stringify({
+          events: fixture.events,
+          coverage: fixture.input.shifts.map(({ id }) => ({ shiftId: id, status: "COMPLETE", issue: null })),
+        }) } }],
+      });
+    }
+    const command = JSON.parse(String(init.body)) as string[];
+    if (command[0] === "GET") return Response.json({ result: ledger });
+    if (command[0] === "SET") return Response.json({ result: "OK" });
+    if (command[2] === "2") ledger = command[6];
+    return Response.json({ result: 1 });
+  });
+  assert.equal(canEnforceLiveBudget(), false);
+  assert.equal((await extractWithServ(fixture.input, fakeKey)).audit.attempted, false);
+  process.env.SERV_SHARED_MAX_CALLS = "24";
+  assert.equal(canEnforceLiveBudget(), true);
+  assert.equal((await extractWithServ(fixture.input, fakeKey)).audit.attempted, true);
+  assert.equal((await extractWithServ(alternateInput(1), fakeKey)).audit.attempted, false);
+  assert.equal(calls, 1);
+  assert.equal(provider.length, 0);
+  assert.equal(JSON.parse(ledger!).calls, 19);
+});
+
+test("failed Redis settlement surfaces accounting uncertainty and fences an expired duplicate", async (t) => {
+  await setUp(t, {
+    SERV_BUDGET_REDIS_URL: "https://failing-redis.invalid",
+    SERV_BUDGET_REDIS_TOKEN: "mock-token",
+    SERV_SHARED_MAX_CALLS: "30",
+    VERCEL: "1",
+  });
+  let ledger: string | null = null;
+  let writes = 0;
+  let providerCalls = 0;
+  t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    if (String(url) !== "https://failing-redis.invalid/") {
+      providerCalls++;
+      return Response.json({
+        id: "mock-settlement", model: "mock-model",
+        choices: [{ finish_reason: "stop", message: { content: JSON.stringify({
+          events: fixture.events,
+          coverage: fixture.input.shifts.map(({ id }) => ({ shiftId: id, status: "COMPLETE", issue: null })),
+        }) } }],
+      });
+    }
+    const command = JSON.parse(String(init.body)) as string[];
+    if (command[0] === "GET") return Response.json({ result: ledger });
+    if (command[0] === "SET") return Response.json({ result: "OK" });
+    if (command[2] === "2") {
+      writes++;
+      if (writes === 2) return new Response(null, { status: 503 });
+      ledger = command[6];
+    }
+    return Response.json({ result: 1 });
+  });
+  const result = await extractWithServ(fixture.input, fakeKey);
+  assert.equal(result.audit.status, "partial");
+  assert.equal(result.audit.accounting, "unconfirmed");
+  assert.match(result.issues.join(" "), /settlement could not be confirmed/);
+  const saved = JSON.parse(ledger!);
+  assert.equal(saved.records[0].status, "reserved");
+  assert.ok(saved.spendMicros > 262_480);
+  for (const pending of Object.values(saved.pending) as { expires: number }[]) pending.expires = 1;
+  ledger = JSON.stringify(saved);
+  const retry = await extractWithServ(fixture.input, fakeKey);
+  assert.equal(retry.audit.status, "unavailable");
+  assert.equal(retry.audit.attempted, false);
+  assert.equal(providerCalls, 1);
+});
+
+test("independent evaluation runs make fresh requests and the same run reuses its completion", async (t) => {
+  const { fetchMock } = await setUp(t);
+  const run = (runId: string) => extractWithServ(fixture.input, fakeKey, { evaluation: { pipeline: "v2", runId } });
+  assert.equal((await run("first")).audit.attempted, true);
+  assert.equal((await run("first")).audit.cacheHit, true);
+  assert.equal((await run("second")).audit.attempted, true);
+  assert.equal(fetchMock.mock.callCount(), 2);
+});
+
+test("provider timeout and malformed response keep the review incomplete and settle accounting", async (t) => {
+  await setUp(t);
+  let calls = 0;
+  t.mock.method(AbortSignal, "timeout", () => AbortSignal.abort(new DOMException("timeout", "TimeoutError")));
+  t.mock.method(globalThis, "fetch", async () => {
+    if (++calls === 1) throw new DOMException("timeout", "TimeoutError");
+    return Response.json({ malformed: true });
+  });
+  const timedOut = await extractWithServ(fixture.input, fakeKey);
+  const malformed = await extractWithServ(alternateInput(1), fakeKey);
+  assert.equal(timedOut.audit.status, "timeout");
+  assert.equal(malformed.audit.status, "invalid_response");
+  for (const result of [timedOut, malformed]) {
+    assert.equal(result.audit.accounting, "settled");
+    assert.equal(result.events.length, 0);
+    assert.ok(result.issues.length);
+  }
+});

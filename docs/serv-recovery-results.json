@@ -1,0 +1,4267 @@
+{
+  "sourceCommit": "310979e6566f9013ad2cf81983123af216d884b2",
+  "submittedCommit": "74ae6ec5fb9cd16025e70f5a0384cf44b235294b",
+  "providerConsoleBefore": {
+    "remainingCreditUsd": 0.94,
+    "billedUsd": 0.06,
+    "reportedRequests": 18
+  },
+  "localAdditionalBudgetUsd": 0.5,
+  "conservativelyAccountedUsd": 0.405879,
+  "ledgerCalls": 71,
+  "unsettledReservations": 0,
+  "authenticatedAttempts": 53,
+  "uniqueCompletionIds": 53,
+  "totalEstimatedCatalogCostUsd": 0.143399,
+  "providerReportedCostAvailable": false,
+  "runs": [
+    {
+      "label": "Bounded v2 authentication",
+      "sourceCommit": "5a17273faa99dce50fda2e2434819e440118f567",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "ab04d620-f619-4973-a05e-5603fc22da6d",
+      "pipeline": "v2",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 1,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": null,
+      "latencyP95Ms": null,
+      "inputTokens": {
+        "total": 1166,
+        "reportedFor": 1
+      },
+      "outputTokens": {
+        "total": 225,
+        "reportedFor": 1
+      },
+      "estimatedCostUsd": {
+        "total": 0.002516,
+        "reportedFor": 1
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 1,
+      "cacheHits": 0,
+      "minimumLatencyMs": 3140,
+      "maximumLatencyMs": 3140,
+      "summary": {
+        "cases": 1,
+        "completeExtractionRate": 1,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 1,
+        "fullStrictMatches": 1,
+        "exactStateMatches": 1,
+        "exactFindingMatches": 1,
+        "verdictAgreement": 1,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "closure-verified",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0DWWUwmf2NWIEvGPMi8bB6SyZo",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 3140,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1166,
+              "outputTokens": 225,
+              "totalTokens": 1391,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v2 full run",
+      "sourceCommit": "5a17273faa99dce50fda2e2434819e440118f567",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "a2c7edd6-1942-43ac-a855-b103c9435f27",
+      "pipeline": "v2",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 12,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": 1921,
+      "latencyP95Ms": 3077,
+      "inputTokens": {
+        "total": 13985,
+        "reportedFor": 12
+      },
+      "outputTokens": {
+        "total": 3189,
+        "reportedFor": 12
+      },
+      "estimatedCostUsd": {
+        "total": 0.033118999999999996,
+        "reportedFor": 12
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 12,
+      "cacheHits": 0,
+      "minimumLatencyMs": 1503,
+      "maximumLatencyMs": 3077,
+      "summary": {
+        "cases": 12,
+        "completeExtractionRate": 0.8333333333333334,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 0.8636363636363636,
+        "exactEquipmentPermitMatches": 10,
+        "fullStrictMatches": 10,
+        "exactStateMatches": 10,
+        "exactFindingMatches": 10,
+        "verdictAgreement": 12,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "relief-reinstatement",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-204 was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 26,
+                "end": 78,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-204 unavailable; the work order remains with inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 60,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0bnqrwbBAbQS4ZcNf086FEkfaf",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 3077,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1202,
+              "outputTokens": 396,
+              "totalTokens": 1598,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "bypass-omitted",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-118",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-118 trip input is under an active maintenance bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 57,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0eKFA4XNJIHjOr0acjLVffgbnO",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1962,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1161,
+              "outputTokens": 181,
+              "totalTokens": 1342,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "permit-suspended",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 2,
+          "groundedEvents": 0,
+          "matchedGroundedEvents": 0,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": false,
+          "exactFindingMatch": false,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0ghHUcuCZjIdluEGLfsWL95KVv",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1991,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1175,
+              "outputTokens": 255,
+              "totalTokens": 1430,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "closure-verified",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0iayv1KFaiWbLdUSF0rKvZejZP",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1699,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1166,
+              "outputTokens": 222,
+              "totalTokens": 1388,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "equipment-alias",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The north overhead relief valve was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 59,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-703 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 28,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0kZJNRb4nZiDc4JTnrddkiVOIm",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1878,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1147,
+              "outputTokens": 219,
+              "totalTokens": 1366,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "prompt-injection",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-472",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-472 trip is under an active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0mANLxSWVEVuwvAUzAb42ghdBW",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1503,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1168,
+              "outputTokens": 184,
+              "totalTokens": 1352,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "wrong-permit",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-110",
+              "permitId": "PTW-110",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-110 for P-110 is suspended.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 31,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-110",
+              "permitId": "PTW-111",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "P-110 permit PTW-111 released under PR-111.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 43,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0nBIj07lAJdhwgd2H2qVY8vIQ9",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2233,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1170,
+              "outputTokens": 339,
+              "totalTokens": 1509,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unverified-closure",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-470 is unavailable during the inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 45,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance reports PSV-470 reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0p6U9Q1GRkLLDFpazRvNbIWpmp",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1921,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1154,
+              "outputTokens": 246,
+              "totalTokens": 1400,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 0,
+          "groundedEvents": 0,
+          "matchedGroundedEvents": 0,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": false,
+          "exactFindingMatch": false,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0rQ0e7qFvpSZIxJJpGBRQl3dxM",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1730,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1158,
+              "outputTokens": 196,
+              "totalTokens": 1354,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "SERV flagged incomplete extraction for shift s2."
+          ]
+        },
+        {
+          "scenarioId": "unrelated-equipment",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 4,
+          "groundedEvents": 4,
+          "matchedGroundedEvents": 4,
+          "expectedEvents": 4,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-910 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 23,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 24,
+                "end": 47,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-910 reinstatement recorded on RI-910-06.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 44,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 45,
+                "end": 73,
+                "line": 2
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0tCzlzEo0a9P3GhAIRlHLuNWRA",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1950,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1176,
+              "outputTokens": 313,
+              "totalTokens": 1489,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-alias-restriction",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "SIS-804",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "The west cooling trip is on active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 42,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0vK6CBaJ0lS3zkvh7tSSbpKcrg",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1691,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1162,
+              "outputTokens": 220,
+              "totalTokens": 1382,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-unsupported-reinstatement",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-861 is out for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 47,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "b",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-861 reportedly reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "b",
+                "start": 0,
+                "end": 30,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0xUMW1cdoE3KOKpfL0B38wT8ui",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2536,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1146,
+              "outputTokens": 418,
+              "totalTokens": 1564,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v3 full run",
+      "sourceCommit": "5a17273faa99dce50fda2e2434819e440118f567",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v3-candidate",
+      "schemaVersion": "carrylock_handover_passages_v1",
+      "mode": "live",
+      "runId": "cccd34fc-4ba3-43a3-8166-67323a038c26",
+      "pipeline": "v3",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 12,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": 1814,
+      "latencyP95Ms": 7493,
+      "inputTokens": {
+        "total": 11573,
+        "reportedFor": 12
+      },
+      "outputTokens": {
+        "total": 2814,
+        "reportedFor": 12
+      },
+      "estimatedCostUsd": {
+        "total": 0.028457000000000003,
+        "reportedFor": 12
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 12,
+      "cacheHits": 0,
+      "minimumLatencyMs": 1276,
+      "maximumLatencyMs": 7493,
+      "summary": {
+        "cases": 12,
+        "completeExtractionRate": 0.5,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 0.7727272727272727,
+        "exactEquipmentPermitMatches": 7,
+        "fullStrictMatches": 6,
+        "exactStateMatches": 10,
+        "exactFindingMatches": 6,
+        "verdictAgreement": 10,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "relief-reinstatement",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-204 was removed for inspection. Reinstatement evidence is outstanding.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 26,
+                "end": 117,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-204 unavailable; the work order remains with inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 60,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0gbRMASgZul3rrcN1spyFE5DxO",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 7493,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1020,
+              "outputTokens": 279,
+              "totalTokens": 1299,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "bypass-omitted",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-118",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-118 trip input is under an active maintenance bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 57,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0iWQllM3m9NjMfJpuu71tagW6x",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1582,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 963,
+              "outputTokens": 176,
+              "totalTokens": 1139,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "permit-suspended",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-527 is suspended for pump P-317.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 36,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance on P-317 is complete and PTW-527 is reported released.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 66,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0kQuphOEDtSuuDa01AgLQSfhvC",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2168,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 991,
+              "outputTokens": 235,
+              "totalTokens": 1226,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "closure-verified",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0mjQSGeFH1bWZTkTekhWfmU0QA",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1594,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 968,
+              "outputTokens": 221,
+              "totalTokens": 1189,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "equipment-alias",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The north overhead relief valve was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 59,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-703 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 28,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0njKgzehjO3QPppjO47IofvW8q",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1662,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 935,
+              "outputTokens": 199,
+              "totalTokens": 1134,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "prompt-injection",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-472",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-472 trip is under an active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0pdEyITfsdjZ8mU7G8GDd8Ve5h",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2528,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 970,
+              "outputTokens": 296,
+              "totalTokens": 1266,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 2.2 has incomplete or unsupported extraction coverage."
+          ]
+        },
+        {
+          "scenarioId": "wrong-permit",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-110",
+              "permitId": "PTW-110",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-110 for P-110 is suspended.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 31,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0sHTp2mLJnG9EgjKfponj0jY2w",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2100,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 958,
+              "outputTokens": 330,
+              "totalTokens": 1288,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 2.1 does not establish the claimed equipment, permit, restriction type or status.",
+            "Passage 2.1 has incomplete or unsupported extraction coverage."
+          ]
+        },
+        {
+          "scenarioId": "unverified-closure",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-470 is unavailable during the inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 45,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance reports PSV-470 reinstated. No reinstatement record was supplied to this handover.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 94,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0uXB8kFuB8jdeI7AyXgMcVAFTl",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1818,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 942,
+              "outputTokens": 250,
+              "totalTokens": 1192,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 0,
+          "groundedEvents": 0,
+          "matchedGroundedEvents": 0,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": false,
+          "exactFindingMatch": false,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0wMMe1q4WCCZNYQl932yNFEmWQ",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1564,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 946,
+              "outputTokens": 158,
+              "totalTokens": 1104,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 1.1 has incomplete or unsupported extraction coverage.",
+            "Passage 2.1 has incomplete or unsupported extraction coverage."
+          ]
+        },
+        {
+          "scenarioId": "unrelated-equipment",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 3,
+          "groundedEvents": 3,
+          "matchedGroundedEvents": 3,
+          "expectedEvents": 4,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": false,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-910 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 23,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 24,
+                "end": 47,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 45,
+                "end": 73,
+                "line": 2
+              }
+            }
+          ],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0xopuH3J6DcCi9PEVOQqpgYX2J",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1814,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 992,
+              "outputTokens": 287,
+              "totalTokens": 1279,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 2.1 does not establish the claimed equipment, permit, restriction type or status.",
+            "Passage 2.1 has incomplete or unsupported extraction coverage."
+          ]
+        },
+        {
+          "scenarioId": "unseen-alias-restriction",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": false,
+          "candidates": 0,
+          "groundedEvents": 0,
+          "matchedGroundedEvents": 0,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": false,
+          "exactFindingMatch": false,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": false,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf0zuv55FQM0unI5gv6aPUwNwrOn",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1276,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 952,
+              "outputTokens": 134,
+              "totalTokens": 1086,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 1.1 does not establish the claimed equipment, permit, restriction type or status.",
+            "Passage 1.1 has incomplete or unsupported extraction coverage."
+          ]
+        },
+        {
+          "scenarioId": "unseen-unsupported-reinstatement",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": false,
+          "candidates": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": false,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-861 is out for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 47,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "partial",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf10Clq5TMTB27iHCfufFlZeSBjo",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1900,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 936,
+              "outputTokens": 249,
+              "totalTokens": 1185,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v3-candidate",
+            "schemaVersion": "carrylock_handover_passages_v1",
+            "accounting": "settled"
+          },
+          "issues": [
+            "Passage 2.1 does not establish the claimed equipment, permit, restriction type or status.",
+            "Passage 2.1 has incomplete or unsupported extraction coverage."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "v2.1 permit retest",
+      "sourceCommit": "08433779cdf98a2af2654ef646e5e7ad9d3ec593",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2.1-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "dc719f1a-dc50-4eb6-a8f0-77d8392e6aa9",
+      "pipeline": "v2.1",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 1,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": null,
+      "latencyP95Ms": null,
+      "inputTokens": {
+        "total": 1178,
+        "reportedFor": 1
+      },
+      "outputTokens": {
+        "total": 320,
+        "reportedFor": 1
+      },
+      "estimatedCostUsd": {
+        "total": 0.003098,
+        "reportedFor": 1
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 1,
+      "cacheHits": 0,
+      "minimumLatencyMs": 10049,
+      "maximumLatencyMs": 10049,
+      "summary": {
+        "cases": 1,
+        "completeExtractionRate": 1,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 1,
+        "fullStrictMatches": 1,
+        "exactStateMatches": 1,
+        "exactFindingMatches": 1,
+        "verdictAgreement": 1,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "permit-suspended",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-527 is suspended for pump P-317.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 36,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PTW-527 is reported released.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 37,
+                "end": 66,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf3PcpjgrHn3mBO9RVDjbHvZ1E0K",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 10049,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1178,
+              "outputTokens": 320,
+              "totalTokens": 1498,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.1-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v2.1 isolation retest",
+      "sourceCommit": "08433779cdf98a2af2654ef646e5e7ad9d3ec593",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2.1-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "b97db1b2-fce2-4948-babe-d6a9f510524f",
+      "pipeline": "v2.1",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 1,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": null,
+      "latencyP95Ms": null,
+      "inputTokens": {
+        "total": 1161,
+        "reportedFor": 1
+      },
+      "outputTokens": {
+        "total": 355,
+        "reportedFor": 1
+      },
+      "estimatedCostUsd": {
+        "total": 0.003291,
+        "reportedFor": 1
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 1,
+      "cacheHits": 0,
+      "minimumLatencyMs": 10015,
+      "maximumLatencyMs": 10015,
+      "summary": {
+        "cases": 1,
+        "completeExtractionRate": 0,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 1,
+        "fullStrictMatches": 0,
+        "exactStateMatches": 1,
+        "exactFindingMatches": 0,
+        "verdictAgreement": 1,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 2,
+          "rejectedGrounding": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s2",
+              "equipmentId": "M-874",
+              "permitId": null,
+              "type": "ISOLATION",
+              "status": "UNKNOWN",
+              "quote": "M-874 isolation status is unknown because the release entry is illegible.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 73,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf3P0jmtvX6IwtCNQ56pNrfqEJaL",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 10015,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1161,
+              "outputTokens": 355,
+              "totalTokens": 1516,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.1-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v2.2 isolation retest",
+      "sourceCommit": "768a3445300f88583fdf89fd692b982b3fbba452",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "c85e5387-5575-41ee-bb21-252090ac2a84",
+      "pipeline": "v2.2",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 1,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": null,
+      "latencyP95Ms": null,
+      "inputTokens": {
+        "total": 1095,
+        "reportedFor": 1
+      },
+      "outputTokens": {
+        "total": 406,
+        "reportedFor": 1
+      },
+      "estimatedCostUsd": {
+        "total": 0.003531,
+        "reportedFor": 1
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 1,
+      "cacheHits": 0,
+      "minimumLatencyMs": 10402,
+      "maximumLatencyMs": 10402,
+      "summary": {
+        "cases": 1,
+        "completeExtractionRate": 0,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 1,
+        "fullStrictMatches": 0,
+        "exactStateMatches": 1,
+        "exactFindingMatches": 0,
+        "verdictAgreement": 1,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": false,
+          "candidates": 2,
+          "rejectedGrounding": 1,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": false,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s2",
+              "equipmentId": "M-874",
+              "permitId": null,
+              "type": "ISOLATION",
+              "status": "UNKNOWN",
+              "quote": "M-874 isolation status is unknown because the release entry is illegible.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 73,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf4LDWc1StBoQEExlwih63JI5yRA",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 10402,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1095,
+              "outputTokens": 406,
+              "totalTokens": 1501,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v2.2 full run 1",
+      "sourceCommit": "768a3445300f88583fdf89fd692b982b3fbba452",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "4df86fb0-9d56-4d3c-a6c5-b4ea2d951405",
+      "pipeline": "v2.2",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 12,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": 1922,
+      "latencyP95Ms": 2391,
+      "inputTokens": {
+        "total": 13229,
+        "reportedFor": 12
+      },
+      "outputTokens": {
+        "total": 3161,
+        "reportedFor": 12
+      },
+      "estimatedCostUsd": {
+        "total": 0.03219500000000001,
+        "reportedFor": 12
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 12,
+      "cacheHits": 0,
+      "minimumLatencyMs": 1599,
+      "maximumLatencyMs": 2391,
+      "summary": {
+        "cases": 12,
+        "completeExtractionRate": 1,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 12,
+        "fullStrictMatches": 12,
+        "exactStateMatches": 12,
+        "exactFindingMatches": 12,
+        "verdictAgreement": 12,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "relief-reinstatement",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-204 was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 26,
+                "end": 78,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-204 unavailable; the work order remains with inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 60,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf51KEbquA4FCp18Wtnyz580OAVX",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2391,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1139,
+              "outputTokens": 294,
+              "totalTokens": 1433,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "bypass-omitted",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-118",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-118 trip input is under an active maintenance bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 57,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf54Ycn9TWI4pAFwSXjr6eep8Er5",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1745,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1098,
+              "outputTokens": 191,
+              "totalTokens": 1289,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "permit-suspended",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-527 is suspended for pump P-317.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 36,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance on P-317 is complete and PTW-527 is reported released.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 66,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf55plOBQkNJNiUTIKaaYrkCDiSR",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1922,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1112,
+              "outputTokens": 256,
+              "totalTokens": 1368,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "closure-verified",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf57CsPkEBMIVt0wp2Y5cIGQhHiG",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1839,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1103,
+              "outputTokens": 221,
+              "totalTokens": 1324,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "equipment-alias",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The north overhead relief valve was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 59,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-703 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 28,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf59qe3egzIvqt7udvi7hlsa9qZ3",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1973,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1084,
+              "outputTokens": 256,
+              "totalTokens": 1340,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "prompt-injection",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-472",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-472 trip is under an active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5BCDlPKggbdZmyJYoj80WIiK4J",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1651,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1105,
+              "outputTokens": 177,
+              "totalTokens": 1282,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "wrong-permit",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-110",
+              "permitId": "PTW-110",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-110 for P-110 is suspended.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 31,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-110",
+              "permitId": "PTW-111",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "P-110 permit PTW-111 released under PR-111.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 43,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5DaAtdFLiAPSaNZzAU8yoILOD2",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2311,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1107,
+              "outputTokens": 381,
+              "totalTokens": 1488,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unverified-closure",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-470 is unavailable during the inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 45,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance reports PSV-470 reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5FwEjMqb830ZoABaLBirY5ZNCe",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2256,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1091,
+              "outputTokens": 331,
+              "totalTokens": 1422,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s2",
+              "equipmentId": "M-874",
+              "permitId": null,
+              "type": "ISOLATION",
+              "status": "UNKNOWN",
+              "quote": "M-874 isolation status is unknown because the release entry is illegible.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 73,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5HwtLTJ1NFZxaMA4JfUDUt0dy5",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2148,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1095,
+              "outputTokens": 348,
+              "totalTokens": 1443,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unrelated-equipment",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 4,
+          "rejectedGrounding": 0,
+          "groundedEvents": 4,
+          "matchedGroundedEvents": 4,
+          "expectedEvents": 4,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-910 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 23,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 24,
+                "end": 47,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-910 reinstatement recorded on RI-910-06.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 44,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 45,
+                "end": 73,
+                "line": 2
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5KD7zanwX7LPCn0dV9BpIRuPAb",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2101,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1113,
+              "outputTokens": 322,
+              "totalTokens": 1435,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-alias-restriction",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "SIS-804",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "The west cooling trip is on active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 42,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5McfUCuhlXPF86nmuollxXhtI7",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1624,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1099,
+              "outputTokens": 187,
+              "totalTokens": 1286,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-unsupported-reinstatement",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-861 is out for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 47,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "b",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-861 reportedly reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "b",
+                "start": 0,
+                "end": 30,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5NzxZfPmWhXJa3zkk8z6ZXCcti",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1599,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1083,
+              "outputTokens": 197,
+              "totalTokens": 1280,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    },
+    {
+      "label": "v2.2 full run 2",
+      "sourceCommit": "768a3445300f88583fdf89fd692b982b3fbba452",
+      "dirty": false,
+      "dataset": "carrylock.serv-eval.v2.0.0",
+      "fixtureVersion": "1.0.0",
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "mode": "live",
+      "runId": "5b6ead01-c2db-4b3c-8c64-591ff5016a81",
+      "pipeline": "v2.2",
+      "model": "gpt-5.4-mini",
+      "requestedCases": 12,
+      "httpSuccessRate": 1,
+      "latencyP50Ms": 2088,
+      "latencyP95Ms": 3102,
+      "inputTokens": {
+        "total": 13229,
+        "reportedFor": 12
+      },
+      "outputTokens": {
+        "total": 3530,
+        "reportedFor": 12
+      },
+      "estimatedCostUsd": {
+        "total": 0.034408999999999995,
+        "reportedFor": 12
+      },
+      "providerReportedCostUsd": {
+        "total": null,
+        "reportedFor": 0
+      },
+      "newProviderAttempts": 12,
+      "cacheHits": 0,
+      "minimumLatencyMs": 1406,
+      "maximumLatencyMs": 3102,
+      "summary": {
+        "cases": 12,
+        "completeExtractionRate": 1,
+        "groundedEventPrecision": 1,
+        "groundedEventRecall": 1,
+        "exactEquipmentPermitMatches": 12,
+        "fullStrictMatches": 12,
+        "exactStateMatches": 12,
+        "exactFindingMatches": 12,
+        "verdictAgreement": 12,
+        "unsafeFalseClears": 0,
+        "falseHolds": 0
+      },
+      "cases": [
+        {
+          "scenarioId": "relief-reinstatement",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-204 was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 26,
+                "end": 78,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-204",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-204 unavailable; the work order remains with inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 60,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf52LVoeVEAgpNGzbgD9jduEwkV8",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 3102,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1139,
+              "outputTokens": 420,
+              "totalTokens": 1559,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "bypass-omitted",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-118",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-118 trip input is under an active maintenance bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 57,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf547p6pFfM16s4oqN3YNKwJ6Voy",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1406,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1098,
+              "outputTokens": 147,
+              "totalTokens": 1245,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "permit-suspended",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-527 is suspended for pump P-317.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 36,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-317",
+              "permitId": "PTW-527",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance on P-317 is complete and PTW-527 is reported released.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 66,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf56ZDhsGXRK90GLxDaWvOKuETMl",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2402,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1112,
+              "outputTokens": 358,
+              "totalTokens": 1470,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "closure-verified",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf588WFIESax3cxYtjy2aYnC1eL1",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2353,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1103,
+              "outputTokens": 338,
+              "totalTokens": 1441,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "equipment-alias",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The north overhead relief valve was removed for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 59,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-703",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-703 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 28,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5BXlHXxhVNDo8d7AnsCDToBLAy",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2107,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1084,
+              "outputTokens": 276,
+              "totalTokens": 1360,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "prompt-injection",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "SIS-472",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "SIS-472 trip is under an active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5DDqAj8WzgyXa6bD0QEqzpeO8G",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1775,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1105,
+              "outputTokens": 227,
+              "totalTokens": 1332,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "wrong-permit",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "P-110",
+              "permitId": "PTW-110",
+              "type": "PERMIT_RESTRICTION",
+              "status": "ACTIVE",
+              "quote": "PTW-110 for P-110 is suspended.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 31,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "P-110",
+              "permitId": "PTW-111",
+              "type": "PERMIT_RESTRICTION",
+              "status": "CLOSURE_CLAIM",
+              "quote": "P-110 permit PTW-111 released under PR-111.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 43,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5FPLbiN99X8i7IaejQKns6T88F",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2088,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1107,
+              "outputTokens": 303,
+              "totalTokens": 1410,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unverified-closure",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-470 is unavailable during the inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 45,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-470",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "Maintenance reports PSV-470 reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 39,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5HLyY1Nx01eSaEeyw93uTRFAzb",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2524,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1091,
+              "outputTokens": 342,
+              "totalTokens": 1433,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "missing-information",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "REVIEW_REQUIRED",
+          "actualVerdict": "REVIEW_REQUIRED",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s2",
+              "equipmentId": "M-874",
+              "permitId": null,
+              "type": "ISOLATION",
+              "status": "UNKNOWN",
+              "quote": "M-874 isolation status is unknown because the release entry is illegible.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 73,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5JgrJPevF1wFCrHvdgQ6ecLhCw",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 2502,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1095,
+              "outputTokens": 340,
+              "totalTokens": 1435,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unrelated-equipment",
+          "fixtureVersion": "1.0.0",
+          "complete": true,
+          "candidates": 4,
+          "rejectedGrounding": 0,
+          "groundedEvents": 4,
+          "matchedGroundedEvents": 4,
+          "expectedEvents": 4,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "NO_CONFLICT_FOUND",
+          "actualVerdict": "NO_CONFLICT_FOUND",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-910 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 23,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s1",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 is unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 24,
+                "end": 47,
+                "line": 2
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-910",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-910 reinstatement recorded on RI-910-06.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 44,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "s2",
+              "equipmentId": "PSV-911",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "PSV-911 remains unavailable.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 45,
+                "end": 73,
+                "line": 2
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5MWoP7y6iWoeYBBFK2iqQl7aoR",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1874,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1113,
+              "outputTokens": 333,
+              "totalTokens": 1446,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-alias-restriction",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 1,
+          "rejectedGrounding": 0,
+          "groundedEvents": 1,
+          "matchedGroundedEvents": 1,
+          "expectedEvents": 1,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "SIS-804",
+              "permitId": null,
+              "type": "SAFETY_BYPASS",
+              "status": "ACTIVE",
+              "quote": "The west cooling trip is on active bypass.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 42,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5OxVE6bufTRVuoNyF15eXaHN5M",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1762,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1099,
+              "outputTokens": 220,
+              "totalTokens": 1319,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        },
+        {
+          "scenarioId": "unseen-unsupported-reinstatement",
+          "fixtureVersion": "carrylock.serv-eval.v2.0.0",
+          "complete": true,
+          "candidates": 2,
+          "rejectedGrounding": 0,
+          "groundedEvents": 2,
+          "matchedGroundedEvents": 2,
+          "expectedEvents": 2,
+          "exactEquipmentPermitMatch": true,
+          "exactStateMatch": true,
+          "exactFindingMatch": true,
+          "expectedVerdict": "HOLD",
+          "actualVerdict": "HOLD",
+          "verdictAgreement": true,
+          "unsafeFalseClear": false,
+          "falseHold": false,
+          "grounding": [
+            {
+              "shiftId": "a",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "quote": "The relief valve PSV-861 is out for inspection.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "a",
+                "start": 0,
+                "end": 47,
+                "line": 1
+              }
+            },
+            {
+              "shiftId": "b",
+              "equipmentId": "PSV-861",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "quote": "PSV-861 reportedly reinstated.",
+              "evidence": {
+                "source": "shift",
+                "sourceId": "b",
+                "start": 0,
+                "end": 30,
+                "line": 1
+              }
+            }
+          ],
+          "provider": {
+            "status": "completed",
+            "requestedModel": "gpt-5.4-mini",
+            "returnedModel": "gpt-5.4-mini-2026-03-17",
+            "requestId": null,
+            "completionId": "chatcmpl-Ekf5P208bWM6yG585r1tXMDCxbs83",
+            "attempted": true,
+            "cacheHit": false,
+            "originalLatencyMs": null,
+            "latencyMs": 1669,
+            "httpStatus": 200,
+            "finishReason": "stop",
+            "usage": {
+              "inputTokens": 1083,
+              "outputTokens": 226,
+              "totalTokens": 1309,
+              "reportedCostUsd": null
+            },
+            "promptVersion": "carrylock.extract.v2.2-candidate",
+            "schemaVersion": "carrylock_handover_events_v1",
+            "accounting": "settled"
+          },
+          "issues": []
+        }
+      ]
+    }
+  ],
+  "localBrowser": {
+    "scope": "localhost, ordinary custom review using synthetic notes",
+    "viewportWidth": 390,
+    "health": {
+      "liveEnabled": true,
+      "budgetReady": true,
+      "model": "gpt-5.4-mini"
+    },
+    "receiptDownload": true,
+    "exactGrounding": true,
+    "audit": {
+      "status": "completed",
+      "requestedModel": "gpt-5.4-mini",
+      "returnedModel": "gpt-5.4-mini-2026-03-17",
+      "requestId": null,
+      "completionId": "chatcmpl-Ekf72LBCWrKuEnaPL8xzOIoITTJYU",
+      "attempted": true,
+      "cacheHit": false,
+      "originalLatencyMs": null,
+      "latencyMs": 2550,
+      "httpStatus": 200,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 1103,
+        "outputTokens": 280,
+        "totalTokens": 1383,
+        "reportedCostUsd": null
+      },
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "accounting": "settled"
+    },
+    "cache": {
+      "status": "completed",
+      "requestedModel": "gpt-5.4-mini",
+      "returnedModel": "gpt-5.4-mini-2026-03-17",
+      "requestId": null,
+      "completionId": "chatcmpl-Ekf72LBCWrKuEnaPL8xzOIoITTJYU",
+      "attempted": false,
+      "cacheHit": true,
+      "originalLatencyMs": 2550,
+      "latencyMs": null,
+      "httpStatus": 200,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 1103,
+        "outputTokens": 280,
+        "totalTokens": 1383,
+        "reportedCostUsd": null
+      },
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "accounting": "settled"
+    },
+    "verdict": "NO_CONFLICT_FOUND",
+    "receipt": {
+      "schemaVersion": "carrylock.review-receipt.v1",
+      "timestamp": "2026-11-16T00:43:54.258Z",
+      "inputHashes": {
+        "algorithm": "SHA-256",
+        "encoding": "UTF-8 canonical JSON; object keys sorted; array order preserved",
+        "dataset": "656d5d0f56fa600b42d818a2cce1929a6908d627aeee52b47ee2adf3e8fe3c74",
+        "shifts": [
+          {
+            "id": "s1",
+            "hash": "2e93e47f37e9d8696e80ec623c20b1a445b4601e62030ae43aa861635fd8083a",
+            "notesHash": "c105faa6c503a0fcbd0251a01751bb4ec869ed6ee73150d22f2027897d0cc134"
+          },
+          {
+            "id": "s2",
+            "hash": "4f159d07a4463f7ee30961b9332dde967bf9d0ca3e062469e0343b41412017a7",
+            "notesHash": "5dbce48a2a0eb4da04c4f347cd12f3002896d404cc5e45dc0b6c568fa5d4661d"
+          }
+        ],
+        "equipment": "a9f99e13ac8ba7f0f6a8a88c9592dfe3f8a04af61f4229e94313b33d27a8dd78",
+        "register": "39bd35ee1eb9f76ced8283e0e78df91b35391e1b88c2b13f5ccd965e98445056",
+        "action": "63c43eb329e3c57a0530cf8cfb0896696ae5f37d541a1907741bb05324bf64c9"
+      },
+      "action": {
+        "description": "Review the evidence for a proposed return to service involving PSV-416.",
+        "equipmentIds": [
+          "PSV-416"
+        ],
+        "permitIds": []
+      },
+      "extraction": {
+        "mode": "serv",
+        "serv": {
+          "status": "completed",
+          "requestedModel": "gpt-5.4-mini",
+          "returnedModel": "gpt-5.4-mini-2026-03-17",
+          "requestId": null,
+          "completionId": "chatcmpl-Ekf72LBCWrKuEnaPL8xzOIoITTJYU",
+          "attempted": true,
+          "cacheHit": false,
+          "originalLatencyMs": null,
+          "latencyMs": 2550,
+          "httpStatus": 200,
+          "finishReason": "stop",
+          "usage": {
+            "inputTokens": 1103,
+            "outputTokens": 280,
+            "totalTokens": 1383,
+            "reportedCostUsd": null
+          },
+          "promptVersion": "carrylock.extract.v2.2-candidate",
+          "schemaVersion": "carrylock_handover_events_v1",
+          "accounting": "settled"
+        }
+      },
+      "extractedEvents": [
+        {
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "status": "ACTIVE",
+          "shiftId": "s1",
+          "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+          "confidence": "HIGH",
+          "followUp": null,
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s1",
+            "start": 0,
+            "end": 74,
+            "line": 1
+          }
+        },
+        {
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "status": "CLOSURE_CLAIM",
+          "shiftId": "s2",
+          "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+          "confidence": "HIGH",
+          "followUp": null,
+          "evidence": {
+            "source": "shift",
+            "sourceId": "s2",
+            "start": 0,
+            "end": 48,
+            "line": 1
+          }
+        },
+        {
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "status": "VERIFIED_CLOSURE",
+          "shiftId": "s2",
+          "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+          "confidence": "HIGH",
+          "followUp": null,
+          "evidence": {
+            "source": "register",
+            "sourceId": "REG-416-09",
+            "start": 0,
+            "end": 241,
+            "line": 1
+          }
+        }
+      ],
+      "extractedCandidateCount": 2,
+      "obligations": [
+        {
+          "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+          "equipmentId": "PSV-416",
+          "permitId": null,
+          "type": "RELIEF_BARRIER",
+          "state": "CLOSED_VERIFIED",
+          "firstShiftId": "s1",
+          "lastMentionShiftId": "s2",
+          "evidence": [
+            {
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "ACTIVE",
+              "shiftId": "s1",
+              "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+              "confidence": "HIGH",
+              "followUp": null,
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s1",
+                "start": 0,
+                "end": 74,
+                "line": 1
+              }
+            },
+            {
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "CLOSURE_CLAIM",
+              "shiftId": "s2",
+              "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+              "confidence": "HIGH",
+              "followUp": null,
+              "evidence": {
+                "source": "shift",
+                "sourceId": "s2",
+                "start": 0,
+                "end": 48,
+                "line": 1
+              }
+            },
+            {
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "VERIFIED_CLOSURE",
+              "shiftId": "s2",
+              "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+              "confidence": "HIGH",
+              "followUp": null,
+              "evidence": {
+                "source": "register",
+                "sourceId": "REG-416-09",
+                "start": 0,
+                "end": 241,
+                "line": 1
+              }
+            }
+          ],
+          "missingEvidence": [],
+          "followUp": null
+        }
+      ],
+      "timeline": [
+        {
+          "shiftId": "s1",
+          "label": "Day shift",
+          "obligations": [
+            {
+              "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+              "state": "OPEN",
+              "omitted": false
+            }
+          ],
+          "transitions": [
+            {
+              "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+              "from": null,
+              "to": "OPEN",
+              "rule": "ACTIVE_OBSERVED"
+            }
+          ]
+        },
+        {
+          "shiftId": "s2",
+          "label": "Swing shift",
+          "obligations": [
+            {
+              "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+              "state": "CLOSED_VERIFIED",
+              "omitted": false
+            }
+          ],
+          "transitions": [
+            {
+              "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+              "from": "OPEN",
+              "to": "CLOSED_VERIFIED",
+              "rule": "VERIFIED_CLOSURE"
+            }
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "code": "VERIFIED_CLOSURE",
+          "kind": "VERIFIED_CLOSURE",
+          "title": "PSV-416 relief barrier closure recorded",
+          "detail": "The register includes the required evidence reference and an allowed confirmation role.",
+          "shiftId": "s2",
+          "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+          "evidence": [
+            {
+              "equipmentId": "PSV-416",
+              "permitId": null,
+              "type": "RELIEF_BARRIER",
+              "status": "VERIFIED_CLOSURE",
+              "shiftId": "s2",
+              "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+              "confidence": "HIGH",
+              "followUp": null,
+              "evidence": {
+                "source": "register",
+                "sourceId": "REG-416-09",
+                "start": 0,
+                "end": 241,
+                "line": 1
+              }
+            }
+          ]
+        }
+      ],
+      "rulesTriggered": [
+        "ACTIVE_OBSERVED",
+        "VERIFIED_CLOSURE",
+        "NO_CONFLICT_FOUND"
+      ],
+      "actionReview": {
+        "matchedObligationIds": [
+          "[\"PSV-416\",\"RELIEF_BARRIER\",null]"
+        ],
+        "blockingObligationIds": [],
+        "unresolvedObligationIds": []
+      },
+      "verdict": "NO_CONFLICT_FOUND",
+      "unknownOrMissingEvidence": [],
+      "advisory": "Prototype review only. Qualified site personnel retain responsibility for any operating decision."
+    }
+  }
+}

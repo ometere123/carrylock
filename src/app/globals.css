@@ -45,3 +45,12 @@
 @media(max-width:1000px){.hero{gap:24px;padding-block:56px 61px}.hero h1{font-size:clamp(42px,6vw,64px)}}
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-block:36px 44px;gap:24px}.hero-plate{max-width:540px}.hero h1{font-size:clamp(42px,8vw,65px)}}
 @media(max-width:490px){.hero h1{font-size:42px}.home-method{padding-block:27px 30px}.home-method .step-grid article{border-right:0;border-bottom:1px solid #ab9d8b;min-height:0}.home-method .step-grid article:last-child{border-bottom:0}}
+
+.guided-panel, .recorded-evidence { margin-block: 1rem; }
+.guided-shifts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; padding: 0; list-style: none; }
+.guided-shifts li { min-width: 0; border-top: 1px solid var(--line); padding-top: .6rem; }
+.guided-shifts blockquote { margin-inline: 0; }
+.guided-result:empty { display: none; }
+.guided-panel a { text-decoration: underline; }
+.guided-panel .button { white-space: normal; }
+.recorded-evidence code { overflow-wrap: anywhere; }

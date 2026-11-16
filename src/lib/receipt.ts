@@ -27,6 +27,7 @@ export interface ServAudit {
   completionId: string | null;
   attempted: boolean;
   cacheHit?: boolean;
+  accounting?: "settled" | "unconfirmed";
   originalLatencyMs?: number | null;
   latencyMs: number | null;
   httpStatus: number | null;

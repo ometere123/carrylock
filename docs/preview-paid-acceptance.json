@@ -1,0 +1,363 @@
+{
+  "origin": "https://carrylock-qyxwa029z-delealufejoel-4184s-projects.vercel.app",
+  "publicAssets": 24,
+  "trackedFiles": 68,
+  "privateValueMatches": 0,
+  "sourceCommit": "6194e38a5ab8fda24fb71850f52488fd856b09c9",
+  "checkedAt": "2026-11-16T06:43:33.214Z",
+  "throttle": {
+    "lifetime": 77,
+    "reserved": 5,
+    "perIpPerHour": 1,
+    "accountingCeilingUsd": 0.43
+  },
+  "ledgerBefore": {
+    "calls": 71,
+    "spendMicros": 405879,
+    "pending": 0
+  },
+  "ledgerAfter": {
+    "calls": 72,
+    "spendMicros": 409280,
+    "pending": 0
+  },
+  "review": {
+    "scope": "anonymous public Preview browser, synthetic source data",
+    "viewportWidth": 390,
+    "health": {
+      "liveEnabled": true,
+      "budgetReady": true,
+      "model": "gpt-5.4-mini"
+    },
+    "receiptDownload": true,
+    "exactGrounding": true,
+    "audit": {
+      "status": "completed",
+      "requestedModel": "gpt-5.4-mini",
+      "returnedModel": "gpt-5.4-mini-2026-03-17",
+      "requestId": null,
+      "completionId": "chatcmpl-Ekkiyg2K5WJDymaVgVnEdHh3fo7i3",
+      "attempted": true,
+      "cacheHit": false,
+      "originalLatencyMs": null,
+      "latencyMs": 3488,
+      "httpStatus": 200,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 1103,
+        "outputTokens": 383,
+        "totalTokens": 1486,
+        "reportedCostUsd": null
+      },
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "accounting": "settled"
+    },
+    "cache": {
+      "status": "completed",
+      "requestedModel": "gpt-5.4-mini",
+      "returnedModel": "gpt-5.4-mini-2026-03-17",
+      "requestId": null,
+      "completionId": "chatcmpl-Ekkiyg2K5WJDymaVgVnEdHh3fo7i3",
+      "attempted": false,
+      "cacheHit": true,
+      "originalLatencyMs": 3488,
+      "latencyMs": null,
+      "httpStatus": 200,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 1103,
+        "outputTokens": 383,
+        "totalTokens": 1486,
+        "reportedCostUsd": null
+      },
+      "promptVersion": "carrylock.extract.v2.2-candidate",
+      "schemaVersion": "carrylock_handover_events_v1",
+      "accounting": "settled"
+    },
+    "verdict": "NO_CONFLICT_FOUND"
+  },
+  "receipt": {
+    "schemaVersion": "carrylock.review-receipt.v1",
+    "timestamp": "2026-11-16T06:43:26.860Z",
+    "inputHashes": {
+      "algorithm": "SHA-256",
+      "encoding": "UTF-8 canonical JSON; object keys sorted; array order preserved",
+      "dataset": "656d5d0f56fa600b42d818a2cce1929a6908d627aeee52b47ee2adf3e8fe3c74",
+      "shifts": [
+        {
+          "id": "s1",
+          "hash": "2e93e47f37e9d8696e80ec623c20b1a445b4601e62030ae43aa861635fd8083a",
+          "notesHash": "c105faa6c503a0fcbd0251a01751bb4ec869ed6ee73150d22f2027897d0cc134"
+        },
+        {
+          "id": "s2",
+          "hash": "4f159d07a4463f7ee30961b9332dde967bf9d0ca3e062469e0343b41412017a7",
+          "notesHash": "5dbce48a2a0eb4da04c4f347cd12f3002896d404cc5e45dc0b6c568fa5d4661d"
+        }
+      ],
+      "equipment": "a9f99e13ac8ba7f0f6a8a88c9592dfe3f8a04af61f4229e94313b33d27a8dd78",
+      "register": "39bd35ee1eb9f76ced8283e0e78df91b35391e1b88c2b13f5ccd965e98445056",
+      "action": "63c43eb329e3c57a0530cf8cfb0896696ae5f37d541a1907741bb05324bf64c9"
+    },
+    "action": {
+      "description": "Review the evidence for a proposed return to service involving PSV-416.",
+      "equipmentIds": [
+        "PSV-416"
+      ],
+      "permitIds": []
+    },
+    "extraction": {
+      "mode": "serv",
+      "serv": {
+        "status": "completed",
+        "requestedModel": "gpt-5.4-mini",
+        "returnedModel": "gpt-5.4-mini-2026-03-17",
+        "requestId": null,
+        "completionId": "chatcmpl-Ekkiyg2K5WJDymaVgVnEdHh3fo7i3",
+        "attempted": true,
+        "cacheHit": false,
+        "originalLatencyMs": null,
+        "latencyMs": 3488,
+        "httpStatus": 200,
+        "finishReason": "stop",
+        "usage": {
+          "inputTokens": 1103,
+          "outputTokens": 383,
+          "totalTokens": 1486,
+          "reportedCostUsd": null
+        },
+        "promptVersion": "carrylock.extract.v2.2-candidate",
+        "schemaVersion": "carrylock_handover_events_v1",
+        "accounting": "settled"
+      }
+    },
+    "extractedEvents": [
+      {
+        "equipmentId": "PSV-416",
+        "permitId": null,
+        "type": "RELIEF_BARRIER",
+        "status": "ACTIVE",
+        "shiftId": "s1",
+        "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+        "confidence": "HIGH",
+        "followUp": null,
+        "evidence": {
+          "source": "shift",
+          "sourceId": "s1",
+          "start": 0,
+          "end": 74,
+          "line": 1
+        }
+      },
+      {
+        "equipmentId": "PSV-416",
+        "permitId": null,
+        "type": "RELIEF_BARRIER",
+        "status": "CLOSURE_CLAIM",
+        "shiftId": "s2",
+        "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+        "confidence": "HIGH",
+        "followUp": null,
+        "evidence": {
+          "source": "shift",
+          "sourceId": "s2",
+          "start": 0,
+          "end": 48,
+          "line": 1
+        }
+      },
+      {
+        "equipmentId": "PSV-416",
+        "permitId": null,
+        "type": "RELIEF_BARRIER",
+        "status": "VERIFIED_CLOSURE",
+        "shiftId": "s2",
+        "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+        "confidence": "HIGH",
+        "followUp": null,
+        "evidence": {
+          "source": "register",
+          "sourceId": "REG-416-09",
+          "start": 0,
+          "end": 241,
+          "line": 1
+        }
+      }
+    ],
+    "extractedCandidateCount": 2,
+    "obligations": [
+      {
+        "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+        "equipmentId": "PSV-416",
+        "permitId": null,
+        "type": "RELIEF_BARRIER",
+        "state": "CLOSED_VERIFIED",
+        "firstShiftId": "s1",
+        "lastMentionShiftId": "s2",
+        "evidence": [
+          {
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "ACTIVE",
+            "shiftId": "s1",
+            "quote": "PSV-416 was removed for inspection and is awaiting a reinstatement record.",
+            "confidence": "HIGH",
+            "followUp": null,
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s1",
+              "start": 0,
+              "end": 74,
+              "line": 1
+            }
+          },
+          {
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "CLOSURE_CLAIM",
+            "shiftId": "s2",
+            "quote": "PSV-416 reinstatement was recorded on RI-416-09.",
+            "confidence": "HIGH",
+            "followUp": null,
+            "evidence": {
+              "source": "shift",
+              "sourceId": "s2",
+              "start": 0,
+              "end": 48,
+              "line": 1
+            }
+          },
+          {
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "VERIFIED_CLOSURE",
+            "shiftId": "s2",
+            "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+            "confidence": "HIGH",
+            "followUp": null,
+            "evidence": {
+              "source": "register",
+              "sourceId": "REG-416-09",
+              "start": 0,
+              "end": 241,
+              "line": 1
+            }
+          }
+        ],
+        "missingEvidence": [],
+        "followUp": null
+      }
+    ],
+    "timeline": [
+      {
+        "shiftId": "s1",
+        "label": "Day shift",
+        "obligations": [
+          {
+            "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+            "state": "OPEN",
+            "omitted": false
+          }
+        ],
+        "transitions": [
+          {
+            "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+            "from": null,
+            "to": "OPEN",
+            "rule": "ACTIVE_OBSERVED"
+          }
+        ]
+      },
+      {
+        "shiftId": "s2",
+        "label": "Swing shift",
+        "obligations": [
+          {
+            "id": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+            "state": "CLOSED_VERIFIED",
+            "omitted": false
+          }
+        ],
+        "transitions": [
+          {
+            "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+            "from": "OPEN",
+            "to": "CLOSED_VERIFIED",
+            "rule": "VERIFIED_CLOSURE"
+          }
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "code": "VERIFIED_CLOSURE",
+        "kind": "VERIFIED_CLOSURE",
+        "title": "PSV-416 relief barrier closure recorded",
+        "detail": "The register includes the required evidence reference and an allowed confirmation role.",
+        "shiftId": "s2",
+        "obligationId": "[\"PSV-416\",\"RELIEF_BARRIER\",null]",
+        "evidence": [
+          {
+            "equipmentId": "PSV-416",
+            "permitId": null,
+            "type": "RELIEF_BARRIER",
+            "status": "VERIFIED_CLOSURE",
+            "shiftId": "s2",
+            "quote": "{\"id\":\"REG-416-09\",\"shiftId\":\"s2\",\"equipmentId\":\"PSV-416\",\"permitId\":null,\"type\":\"RELIEF_BARRIER\",\"status\":\"CLOSED\",\"evidenceType\":\"REINSTATEMENT_RECORD\",\"evidenceRef\":\"RI-416-09\",\"confirmedBy\":\"M. Ibe (synthetic)\",\"role\":\"SHIFT_SUPERVISOR\"}",
+            "confidence": "HIGH",
+            "followUp": null,
+            "evidence": {
+              "source": "register",
+              "sourceId": "REG-416-09",
+              "start": 0,
+              "end": 241,
+              "line": 1
+            }
+          }
+        ]
+      }
+    ],
+    "rulesTriggered": [
+      "ACTIVE_OBSERVED",
+      "VERIFIED_CLOSURE",
+      "NO_CONFLICT_FOUND"
+    ],
+    "actionReview": {
+      "matchedObligationIds": [
+        "[\"PSV-416\",\"RELIEF_BARRIER\",null]"
+      ],
+      "blockingObligationIds": [],
+      "unresolvedObligationIds": []
+    },
+    "verdict": "NO_CONFLICT_FOUND",
+    "unknownOrMissingEvidence": [],
+    "advisory": "Prototype review only. Qualified site personnel retain responsibility for any operating decision."
+  },
+  "quota": {
+    "checkedAt": "2026-11-16T06:40:56.646Z",
+    "scope": "isolated budget-test key in existing Upstash",
+    "sharedLifetimeLimit": 76,
+    "reserved": 5,
+    "ordinaryAdmissionLimit": 71,
+    "accountedCalls": 71,
+    "accountedUsd": 0.405879,
+    "providerRequests": 0,
+    "attempted": false,
+    "providerStatus": "rate_limited",
+    "verdict": "REVIEW_REQUIRED",
+    "testLedgerRecords": 0,
+    "sharedLedgerUnchanged": true,
+    "testKeyExpirySeconds": 3600
+  },
+  "openServConsoleBefore": {
+    "creditUsd": 0.79,
+    "requests": 71,
+    "totalSpendUsdDisplayed": 0.21,
+    "project": "carrylock"
+  },
+  "deploymentId": "dpl_HWFe2NHGmUstjTS3Pv8VyYrnfsDU"
+}

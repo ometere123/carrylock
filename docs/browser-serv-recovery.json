@@ -1,0 +1,92 @@
+{
+  "origin": "http://127.0.0.1:3112",
+  "checkedAt": "2026-11-16T00:44:57.477Z",
+  "routes": {
+    "/": 200,
+    "/methodology": 200,
+    "/app": 200
+  },
+  "scenarios": [
+    {
+      "id": "relief-reinstatement",
+      "verdict": "HOLD",
+      "state": "OPEN",
+      "finding": "OMITTED_FROM_HANDOVER"
+    },
+    {
+      "id": "bypass-omitted",
+      "verdict": "HOLD",
+      "state": "OPEN",
+      "finding": "OMITTED_FROM_HANDOVER"
+    },
+    {
+      "id": "permit-suspended",
+      "verdict": "HOLD",
+      "state": "CONFLICT",
+      "finding": "CONFLICTING_EVIDENCE"
+    },
+    {
+      "id": "closure-verified",
+      "verdict": "NO_CONFLICT_FOUND",
+      "state": "CLOSED_VERIFIED",
+      "finding": "VERIFIED_CLOSURE"
+    }
+  ],
+  "mobile": [
+    {
+      "route": "/",
+      "viewportWidth": 390,
+      "actualWidth": 390
+    },
+    {
+      "route": "/methodology",
+      "viewportWidth": 390,
+      "actualWidth": 390
+    },
+    {
+      "route": "/app",
+      "viewportWidth": 390,
+      "actualWidth": 390
+    },
+    {
+      "route": "/app (verified closure)",
+      "viewportWidth": 390,
+      "actualWidth": 390
+    },
+    {
+      "route": "/",
+      "viewportWidth": 320,
+      "actualWidth": 320
+    },
+    {
+      "route": "/methodology",
+      "viewportWidth": 320,
+      "actualWidth": 320
+    },
+    {
+      "route": "/app",
+      "viewportWidth": 320,
+      "actualWidth": 320
+    },
+    {
+      "route": "/app (verified closure)",
+      "viewportWidth": 320,
+      "actualWidth": 320
+    }
+  ],
+  "requests": {
+    "health": 200,
+    "invalidJson": 400,
+    "unknownFixture": 404
+  },
+  "guide": {
+    "keyboard": true,
+    "allThreeShifts": true,
+    "historicalCompletion": true
+  },
+  "customEditor": {
+    "equipmentRowChangesPreserveDisplayedAliasesAndPermits": true,
+    "editedRegisterIdRetainsFocus": true,
+    "inferenceRequestSent": false
+  }
+}
