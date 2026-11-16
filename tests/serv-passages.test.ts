@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { reconcile } from "../src/lib/engine";
+import { recoverDelimitedQuote } from "../src/lib/serv";
 import { buildPassages, decodePassages } from "../src/lib/serv-passages";
 import type { ReviewInput } from "../src/lib/types";
 
@@ -75,4 +76,12 @@ test("v3 requires coverage for each passage, including material passages labeled
     assert.equal(reconcile(input, [], { issues: result.issues }).verdict, "REVIEW_REQUIRED");
   }
   assert.equal(decodePassages(input, buildPassages(input), "{malformed"), null);
+});
+
+test("v2.1 removes only extraneous delimiters around a unique verbatim excerpt", () => {
+  const notes = 'A permit is suspended. Another line.';
+  assert.equal(recoverDelimitedQuote(notes, '"A permit is suspended."'), 'A permit is suspended.');
+  assert.equal(recoverDelimitedQuote(notes, '"The permit is suspended."'), '"The permit is suspended."');
+  assert.equal(recoverDelimitedQuote(notes + ' A permit is suspended.', '"A permit is suspended."'), '"A permit is suspended."');
+  assert.equal(recoverDelimitedQuote('Operator wrote "hold".', '"hold"'), '"hold"');
 });
