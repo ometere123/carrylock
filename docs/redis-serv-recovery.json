@@ -1,0 +1,24 @@
+{
+  "provider": "Upstash Redis via Vercel Marketplace",
+  "environment": "preview resource, local parity test",
+  "verifiedAt": "2026-11-16T00:47:55.813Z",
+  "providerAttempts": 0,
+  "getSetNxPxEval": true,
+  "concurrentDuplicateReservations": 1,
+  "cacheHit": true,
+  "perClientHourlyLimit": true,
+  "reserveAwareOverallLimit": true,
+  "settledRecords": 2,
+  "usage": {
+    "baselineCalls": 18,
+    "finalCalls": 20,
+    "unsettled": 0
+  },
+  "testLedgerExpirySeconds": 3600,
+  "stagedLedger": {
+    "calls": 71,
+    "spendMicros": 405879,
+    "pending": 0,
+    "admittedWhileSeeding": false
+  }
+}

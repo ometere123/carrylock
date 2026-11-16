@@ -45,7 +45,7 @@ v3 is evaluation-only. It sends numbered passages, validates coverage and canoni
 
 A settlement failure leaves the original accounting reservation intact and returns a partial or unavailable result with an unconfirmed accounting flag. The duplicate fence remains after the in-flight timer expires. Resolve an expired unresolved reservation by reconciling the provider and store before allowing a retry. Keep the original charge reservation when the provider outcome cannot be confirmed.
 
-Production still needs a verified HTTPS Redis REST store that supports the existing GET, SET NX PX and EVAL operations, explicit usage ceilings, safe provider admission, and a fresh ordinary-user smoke. See the [shared-store configuration](POSTSUBMISSION.md#shared-redis-and-credit-reconciliation). Release also requires organizer permission and a passing live benchmark.
+Production requires the verified Redis resource to be connected, explicit usage ceilings, safe provider admission, and a fresh ordinary-user smoke. See the [shared-store configuration](POSTSUBMISSION.md#shared-redis-and-credit-reconciliation). Release also requires organizer permission and a passing live benchmark.
 
 
 ## Measured recovery
@@ -66,3 +66,9 @@ The narrow revisions were based on the two failed development cases. v2.1 passed
 The ordinary localhost custom review showed both exact excerpts and downloaded the matching receipt at 390 px. Its advisory was NO_CONFLICT_FOUND and its settled completion took 2550 ms. The exact app source was `310979e6566f9013ad2cf81983123af216d884b2`. The submitted production health endpoint reported budgetReady=false. No public smoke is recorded.
 
 The final candidate passed npm ci, lint, typecheck, 44 offline tests, production build and engine evaluation. Chrome exercised the four presets, keyboard flow, mobile widths of 320 and 390 pixels, and fixture JSON receipt download. Fault-injection tests covered Redis reservation/settlement failures, duplicate fencing, concurrent admission, caching, insufficient budget, provider timeout and malformed response. The runtime dependency audit reported zero advisories. [Browser checks](browser-serv-recovery.json)
+
+## Verified free Redis storage
+
+Vercel provisioned `carrylock-serv-ledger` on Upstash Free with automatic upgrades and eviction disabled. The connection targets Preview only. A local parity check against the actual Redis REST endpoint exercised the application’s GET, SET NX PX, and EVAL transaction path. It verified concurrent duplicate fencing, settlement, cache reuse, per-client throttling and the overall ceiling. It called SERV zero times. The isolated test key was set to expire. [Redis verification](redis-serv-recovery.json)
+
+The prospective shared ledger contains the historical and new total of 71 attempts and $0.405879 accounted, with zero outstanding reservations. The seed operation admitted no provider call. Before an authorized production launch, reconcile any newer usage, confirm the remaining credit in the console, connect the verified store privately to production, set its URL, write token, key, explicit shared call/spend limits and hourly limit, and verify one ordinary-user paid review. The submitted production alias is still on deployment `dpl_Hu6XEcHEzBZodG6iPoUMCA9M6jrW`.
