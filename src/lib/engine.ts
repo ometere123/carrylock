@@ -59,7 +59,7 @@ function identifierContinues(source: string, index: number, direction: 1 | -1): 
     (identifierSeparator.test(character) && identifierCharacter.test(source[index + direction] ?? ''));
 }
 
-function mentionsIdentifier(text: string, identifier: string): boolean {
+export function mentionsIdentifier(text: string, identifier: string): boolean {
   const source = text.toLowerCase();
   const needle = identifier.trim().toLowerCase();
   if (!needle) return false;

@@ -1,3 +1,6 @@
+import {
+  buildPassages, decodePassages, passageResponseFormat, PASSAGE_PROMPT_VERSION, PASSAGE_SCHEMA_VERSION, PASSAGE_SYSTEM,
+} from "./serv-passages";
 import type { Event, ReviewInput } from "./types";
 import { hashInput, type ServAudit, type ServStatus, type ServUsage } from "./receipt";
 import { budgetClient, reservedDemoAuthorized, reserveServCall, settleServCall } from "./serv-budget";
@@ -158,10 +161,15 @@ export function decodeServResult(input: ReviewInput, content: string, audit: Ser
   };
 }
 
+export type ServPipeline = "v2" | "v3";
+
 export async function extractWithServ(
   input: ReviewInput,
   apiKey: string,
-  options: { client?: string; finalDemo?: boolean; signal?: AbortSignal } = {},
+  options: {
+    client?: string; finalDemo?: boolean; signal?: AbortSignal;
+    evaluation?: { pipeline: ServPipeline; runId: string };
+  } = {},
 ): Promise<ServResult> {
   if (!apiKey.trim()) {
     return failure(auditDefaults("not_configured"), "Live extraction requires a SERV credential.");
@@ -169,22 +177,35 @@ export async function extractWithServ(
   if (options.signal?.aborted) {
     return failure(auditDefaults("unavailable"), "The review was cancelled before SERV extraction started.");
   }
+  const passages = options.evaluation?.pipeline === "v3" ? buildPassages(input) : null;
+  if (passages && passages.length > 512) {
+    return failure({ ...auditDefaults("partial"), promptVersion: PASSAGE_PROMPT_VERSION, schemaVersion: PASSAGE_SCHEMA_VERSION },
+      "The candidate passage limit was exceeded. Extraction is incomplete.");
+  }
+  const promptVersion = passages ? PASSAGE_PROMPT_VERSION : PROMPT_VERSION;
+  const schemaVersion = passages ? PASSAGE_SCHEMA_VERSION : SCHEMA_VERSION;
   const body = JSON.stringify({
     model: SERV_MODEL,
     reasoning_effort: "low",
     max_completion_tokens: MAX_COMPLETION_TOKENS,
     messages: [
-      { role: "system", content: system },
-      { role: "user", content: JSON.stringify({ shifts: input.shifts, equipment: input.equipment }) },
+      { role: "system", content: passages ? PASSAGE_SYSTEM : system },
+      { role: "user", content: JSON.stringify(passages
+        ? { passages, equipment: input.equipment }
+        : { shifts: input.shifts, equipment: input.equipment }) },
     ],
-    response_format: servResponseFormat,
+    response_format: passages ? passageResponseFormat : servResponseFormat,
     stream: false,
   });
-  const hash = hashInput([SERV_MODEL, PROMPT_VERSION, SCHEMA_VERSION, input]);
+  const hash = options.evaluation
+    ? hashInput(["evaluation", options.evaluation.runId, body])
+    : hashInput([SERV_MODEL, promptVersion, schemaVersion, input]);
   // Byte-per-token plus 4096 tokens of request framing is a conservative catalog estimate, not a billing guarantee.
   const reservedMicros = Buffer.byteLength(body, "utf8") + 4096 + 6 * MAX_COMPLETION_TOKENS;
   const reserved = await reserveServCall(hash, options.client ?? budgetClient(), Boolean(options.finalDemo), reservedMicros, SERV_MODEL, apiKey);
-  if (reserved.kind === "blocked") return failure(auditDefaults(reserved.unavailable ? "unavailable" : "rate_limited"), reserved.reason);
+  if (reserved.kind === "blocked") {
+    return failure({ ...auditDefaults(reserved.unavailable ? "unavailable" : "rate_limited"), promptVersion, schemaVersion }, reserved.reason);
+  }
   if (reserved.kind === "cached") {
     const { result } = reserved;
     return {
@@ -199,24 +220,32 @@ export async function extractWithServ(
     };
   }
 
-  const result = await callProvider(input, body, apiKey, options.signal);
+  const result = await callProvider(input, body, apiKey, options.signal, passages);
   try {
-    await settleServCall(hash, reserved.reservation, result, apiKey);
-    return result;
+    const accounted: ServResult = { ...result, audit: { ...result.audit, accounting: "settled" } };
+    await settleServCall(hash, reserved.reservation, accounted, apiKey);
+    return accounted;
   } catch {
     return {
       ...result,
       issues: [...result.issues, "The provider call was reserved, but its budget settlement could not be confirmed."],
-      audit: { ...result.audit, status: result.audit.status === "completed" ? "partial" : result.audit.status },
+      audit: { ...result.audit, accounting: "unconfirmed", status: result.audit.status === "completed" ? "partial" : result.audit.status },
     };
   }
 }
 
-async function callProvider(input: ReviewInput, body: string, apiKey: string, requestSignal?: AbortSignal): Promise<ServResult> {
+async function callProvider(
+  input: ReviewInput, body: string, apiKey: string, requestSignal?: AbortSignal,
+  passages?: ReturnType<typeof buildPassages> | null,
+): Promise<ServResult> {
   const started = performance.now();
   const timeout = AbortSignal.timeout(TIMEOUT_MS);
   const signal = requestSignal ? AbortSignal.any([timeout, requestSignal]) : timeout;
-  const audit: ServAudit = { ...auditDefaults("unavailable"), attempted: true };
+  const audit: ServAudit = {
+    ...auditDefaults("unavailable"), attempted: true,
+    promptVersion: passages ? PASSAGE_PROMPT_VERSION : PROMPT_VERSION,
+    schemaVersion: passages ? PASSAGE_SCHEMA_VERSION : SCHEMA_VERSION,
+  };
 
   try {
     const response = await fetch(SERV_URL, {
@@ -267,7 +296,10 @@ async function callProvider(input: ReviewInput, body: string, apiKey: string, re
     ) {
       return failure({ ...audit, status: "invalid_response" }, "SERV did not return a complete, attributable structured extraction.");
     }
-    return decodeServResult(input, message.content, audit);
+    if (!passages) return decodeServResult(input, message.content, audit);
+    const decoded = decodePassages(input, passages, message.content);
+    if (!decoded) return failure({ ...audit, status: "invalid_response" }, "SERV output did not match the passage extraction schema.");
+    return { ...decoded, audit: { ...audit, status: decoded.issues.length ? "partial" : "completed" } };
   } catch {
     audit.latencyMs = Math.round(performance.now() - started);
     return timeout.aborted

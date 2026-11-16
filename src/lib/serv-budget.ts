@@ -211,6 +211,16 @@ export async function verifySharedBudget(): Promise<boolean> {
   }
 }
 
+export async function inspectLocalEvaluationBudget() {
+  if (process.env.VERCEL === "1" || redisConfig()) throw new Error("Local evaluation requires the locked local ledger.");
+  return withLocalLedger(ledger => ({
+    calls: ledger.calls,
+    spendMicros: ledger.spendMicros,
+    regularRemaining: Math.max(0, Math.floor(configuredNumber(process.env.SERV_DEV_MAX_CALLS, DEFAULT_TOTAL_CALLS))
+      - RESERVED_CALLS - ledger.calls),
+  }));
+}
+
 export function budgetClient(request?: Request): string {
   const forwarded = process.env.VERCEL === "1" ? request?.headers.get("x-vercel-forwarded-for") : null;
   const address = forwarded?.split(",")[0].trim();
@@ -261,9 +271,7 @@ function cleanUp(ledger: Ledger, now: number) {
   for (const [key, entry] of Object.entries(ledger.cache)) {
     if (entry.expires <= now) delete ledger.cache[key];
   }
-  for (const [key, pending] of Object.entries(ledger.pending)) {
-    if (pending.expires <= now) delete ledger.pending[key];
-  }
+  // Unsettled calls keep both the spend reservation and the duplicate fence.
 }
 
 export async function reserveServCall(
@@ -285,7 +293,12 @@ export async function reserveServCall(
         ledger.cache[hash] = { expires: cached.expires, sealed: sealCache(cached.result, hash, apiKey) };
         return { kind: "cached", result: cached.result };
       }
-      if (ledger.pending[hash]) return { kind: "blocked", reason: "An identical extraction is already in progress." };
+      if (ledger.pending[hash]) return {
+        kind: "blocked", unavailable: ledger.pending[hash].expires <= now ? true : undefined,
+        reason: ledger.pending[hash].expires > now
+          ? "An identical extraction is already in progress."
+          : "An identical request has unresolved accounting. No provider retry was sent.",
+      };
       const shared = redisConfig() !== null;
       const totalCalls = Math.floor(shared
         ? configuredNumber(process.env.SERV_SHARED_MAX_CALLS, 0)
@@ -328,7 +341,7 @@ export async function reserveServCall(
 
 export async function settleServCall(hash: string, reservation: Pending, result: ServResult, apiKey: string) {
   await withLedger((ledger) => {
-    if (ledger.pending[hash]?.id !== reservation.id) return;
+    if (ledger.pending[hash]?.id !== reservation.id) throw new Error("SERV reservation is missing or changed.");
     delete ledger.pending[hash];
     const { usage } = result.audit;
     const catalogMicros = usage?.inputTokens != null && usage.outputTokens != null
@@ -350,5 +363,5 @@ export async function settleServCall(hash: string, reservation: Pending, result:
     if (result.audit.status === "completed" || result.audit.status === "partial") {
       ledger.cache[hash] = { expires: Date.now() + HOUR_MS, sealed: sealCache(result, hash, apiKey) };
     }
-  }).catch(() => undefined);
+  });
 }
