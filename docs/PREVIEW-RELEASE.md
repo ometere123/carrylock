@@ -10,6 +10,10 @@ The existing Upstash Preview credentials are mapped on Vercel to `SERV_BUDGET_RE
 
 Chrome verified all four presets, the three-shift guide, keyboard operation, the historical SERV completion, fixture receipt download and mobile widths of 320 and 390 pixels. The ordinary disabled custom review returned REVIEW_REQUIRED and made no provider call. The static scan found zero matches to the actual private values across the tracked files, three public HTML routes and their script responses. [Browser results](browser-preview-closed.json)
 
+## No-spend exhausted-quota check
+
+The real Redis-backed SERV admission code returned `rate_limited` and `REVIEW_REQUIRED` against an isolated key. The test copied the accounting floor of 71 calls and $0.405879, set 76 total slots including 5 reserved, and blocked all provider networking. It made zero provider calls, created zero reservation records, and left the active shared ledger byte-for-byte unchanged. The isolated test key expires after one hour. [Quota evidence](preview-paid-quota-test.json)
+
 ## Reproduce
 
 Use the [SERV recovery instructions](SERV-RECOVERY.md#recovery-and-reproduction) and [saved 12-case evaluations](serv-recovery-results.json) for comparable model tests. Set `CARRYLOCK_ORIGIN` to the paused Preview origin, `CARRYLOCK_CHECK_GUIDE=1`, `CARRYLOCK_CHECK_DISABLED_CUSTOM=1` and `CARRYLOCK_BROWSER_ARTIFACTS` to a scratch directory, then run `node scripts/demo-browser.mjs` with Chrome.
