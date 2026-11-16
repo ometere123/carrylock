@@ -128,3 +128,43 @@ test("never submits parallel identical requests more than once", async (t) => {
   assert.equal(fetchMock.mock.callCount(), 1);
   assert.equal(results.filter((result) => result.audit.attempted).length, 1);
 });
+
+test("requires an explicit shared allowance and preserves historical usage in Redis", async (t) => {
+  const { fetchMock } = await setUp(t, {
+    SERV_BUDGET_REDIS_URL: "https://mock-redis.invalid",
+    SERV_BUDGET_REDIS_TOKEN: "mock-token",
+    SERV_SHARED_MAX_CALLS: "",
+    SERV_BUDGET_USED_CALLS: "17",
+    SERV_BUDGET_USED_USD: "0.26",
+    VERCEL: "1",
+  });
+  const provider = fetchMock.mock.calls;
+  let ledger: string | null = null;
+  let calls = 0;
+  t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    if (String(url) !== "https://mock-redis.invalid/") {
+      calls++;
+      return Response.json({
+        id: "mock-shared-completion", model: "mock-model",
+        choices: [{ finish_reason: "stop", message: { content: JSON.stringify({
+          events: fixture.events,
+          coverage: fixture.input.shifts.map(({ id }) => ({ shiftId: id, status: "COMPLETE", issue: null })),
+        }) } }],
+      });
+    }
+    const command = JSON.parse(String(init.body)) as string[];
+    if (command[0] === "GET") return Response.json({ result: ledger });
+    if (command[0] === "SET") return Response.json({ result: "OK" });
+    if (command[2] === "2") ledger = command[6];
+    return Response.json({ result: 1 });
+  });
+  assert.equal(canEnforceLiveBudget(), false);
+  assert.equal((await extractWithServ(fixture.input, fakeKey)).audit.attempted, false);
+  process.env.SERV_SHARED_MAX_CALLS = "24";
+  assert.equal(canEnforceLiveBudget(), true);
+  assert.equal((await extractWithServ(fixture.input, fakeKey)).audit.attempted, true);
+  assert.equal((await extractWithServ(alternateInput(1), fakeKey)).audit.attempted, false);
+  assert.equal(calls, 1);
+  assert.equal(provider.length, 0);
+  assert.equal(JSON.parse(ledger!).calls, 19);
+});

@@ -162,7 +162,7 @@ function Editor({ initial, live, busy, submit }: {initial: ReviewInput; live: bo
   </form>;
 }
 
-export function Workspace() {
+export function Workspace({ walkthrough, recordedEvidence }: { walkthrough?: React.ReactNode; recordedEvidence?: React.ReactNode }) {
   const [view, setView] = useState<"demo"|"custom">("demo");
   const [active, setActive] = useState<string | null>(null);
   const [data, setData] = useState<ReviewResponse | null>(null);
@@ -197,6 +197,13 @@ export function Workspace() {
   const switchTo = (tab: "demo"|"custom") => { if (tab !== view) {setView(tab);setData(null);setError(null);setActive(null);} };
   return <>
     <div className="workspace-title"><div><div className="eyebrow"><i/> THE HANDOVER EVIDENCE DESK</div><h1>Review workspace</h1><p>Trace the obligations that carry across shifts.</p></div><div className="workspace-stamp"><ClipboardList size={17}/> ADVISORY PROTOTYPE</div></div>
+    <section className="panel field-panel guided-panel" aria-labelledby="guided-title">
+      {walkthrough}
+      <button className="button primary" type="button" disabled={busy} onClick={() => { switchTo("demo"); void run({scenarioId:"relief-reinstatement"}); }}>Run the guided synthetic review</button>
+      <p className="guided-result" role="status">{active === "relief-reinstatement" && data ? "Review ready. Open the scenario results below for the timeline and receipt." : ""}</p>
+      {active === "relief-reinstatement" && data && <a href="#review-results">Jump to review results</a>}
+    </section>
+    {recordedEvidence}
     <div className="workspace-tabs" aria-label="Choose review input">
       <button type="button" aria-pressed={view==="demo"} disabled={busy} onClick={()=>switchTo("demo")}><Layers3 size={17}/> Synthetic scenarios</button>
       <button type="button" aria-pressed={view==="custom"} disabled={busy} onClick={()=>switchTo("custom")}><FileSearch size={17}/> Custom review</button>
@@ -208,7 +215,7 @@ export function Workspace() {
     </section> : <Editor key={editorVersion} initial={draft} live={live} busy={busy} submit={input=>{setDraft(input);void run({input});}}/>}
     {busy && <p className="workspace-message" role="status">Reconciling the supplied evidence…</p>}
     {error && <p className="workspace-message error" role="alert">{error}</p>}
-    {data && <Result key={data.receipt.timestamp} data={data} edit={edit}/>}
+    {data && <div id="review-results" tabIndex={-1}><Result key={data.receipt.timestamp} data={data} edit={edit}/></div>}
     {!data&&!busy&&!error&&view==="demo"&&<div className="workspace-empty"><GitCompareArrows size={29}/><h2>Every open obligation has a history.</h2><p>Choose a synthetic scenario to see which details carried forward, which went missing, and why the proposed action received its verdict.</p></div>}
   </>;
 }

@@ -57,7 +57,9 @@ Four further diagnostic completions returned HTTP 200. Those diagnostics exposed
 
 The synthetic fixtures validate a bounded set of expected behaviors. These two small live runs evaluated the pre-release integration and exposed extraction failures. The release's final guardrails have no additional authenticated benchmark data. Field accuracy, operational safety, and behavior on plant records require independent validation.
 
-## Reproduce
+## Reproduce the submitted baseline
+
+These SERV commands describe the submitted commit `74ae6ec`. For the upgrade branch and its guarded offline-first runner, see [post-submission evidence](POSTSUBMISSION.md).
 
 - `npm test` runs deterministic tests without contacting SERV.
 - `npm run eval:engine` prints the baseline comparison without contacting SERV.

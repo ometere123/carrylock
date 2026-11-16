@@ -9,8 +9,8 @@ const DEFAULT_TOTAL_CALLS = 20;
 const RESERVED_CALLS = 5;
 const DEFAULT_HOURLY_PER_CLIENT = 3;
 const DEFAULT_MAX_SPEND_USD = 1;
-const BASELINE_CALLS = 17;
-const BASELINE_MICROS = 260_000;
+const BASELINE_CALLS = 18;
+const BASELINE_MICROS = 262_480;
 const HOUR_MS = 3_600_000;
 const PENDING_MS = 75_000;
 const LOCK_TIMEOUT_MS = 3_000;
@@ -45,7 +45,7 @@ type Ledger = {
 
 type BudgetOutcome =
   | { kind: "cached"; result: ServResult }
-  | { kind: "blocked"; reason: string }
+  | { kind: "blocked"; reason: string; unavailable?: true }
   | { kind: "allowed"; reservation: Pending };
 
 function nonnegativeInteger(input: unknown): input is number {
@@ -58,14 +58,15 @@ function configuredNumber(value: string | undefined, fallback: number) {
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
 }
 
-function initialLedger(): Ledger {
-  const calls = Math.ceil(configuredNumber(process.env.SERV_BUDGET_USED_CALLS, BASELINE_CALLS));
-  const spendMicros = Math.ceil(configuredNumber(process.env.SERV_BUDGET_USED_USD, BASELINE_MICROS / 1_000_000) * 1_000_000);
+function initialLedger(shared: boolean): Ledger {
+  const calls = Math.max(shared ? BASELINE_CALLS : 0, Math.ceil(configuredNumber(process.env.SERV_BUDGET_USED_CALLS, BASELINE_CALLS)));
+  const spendMicros = Math.max(shared ? BASELINE_MICROS : 0,
+    Math.ceil(configuredNumber(process.env.SERV_BUDGET_USED_USD, BASELINE_MICROS / 1_000_000) * 1_000_000));
   return { version: 1, calls, spendMicros, clients: {}, pending: {}, cache: {}, records: [] };
 }
 
-function readLedger(raw: string | null): Ledger {
-  const baseline = initialLedger();
+function readLedger(raw: string | null, shared = false): Ledger {
+  const baseline = initialLedger(shared);
   if (raw === null) return baseline;
   const ledger = JSON.parse(raw) as Partial<Ledger>;
   if (ledger.version !== 1 || !nonnegativeInteger(ledger.calls) || !nonnegativeInteger(ledger.spendMicros) ||
@@ -125,7 +126,7 @@ async function withRedisLedger<T>(
   try {
     const raw = await command(["GET", ledgerKey]);
     if (raw !== null && typeof raw !== "string") throw new Error("Unexpected SERV ledger response.");
-    const ledger = readLedger(raw);
+    const ledger = readLedger(raw, true);
     const result = operation(ledger);
     const save = await command([
       "EVAL",
@@ -191,7 +192,20 @@ async function withLedger<T>(operation: (ledger: Ledger) => T): Promise<T> {
 
 export function canEnforceLiveBudget(): boolean {
   try {
-    return process.env.VERCEL !== "1" || redisConfig() !== null;
+    if (redisConfig()) return configuredNumber(process.env.SERV_SHARED_MAX_CALLS, 0) > 0;
+    return process.env.VERCEL !== "1";
+  } catch {
+    return false;
+  }
+}
+
+export async function verifySharedBudget(): Promise<boolean> {
+  try {
+    const config = redisConfig();
+    if (!config || !canEnforceLiveBudget()) return false;
+    return await withRedisLedger(config, ledger =>
+      ledger.calls < Math.floor(configuredNumber(process.env.SERV_SHARED_MAX_CALLS, 0)) - RESERVED_CALLS &&
+      ledger.spendMicros < configuredNumber(process.env.SERV_MAX_SPEND_USD, DEFAULT_MAX_SPEND_USD) * 1_000_000);
   } catch {
     return false;
   }
@@ -272,7 +286,10 @@ export async function reserveServCall(
         return { kind: "cached", result: cached.result };
       }
       if (ledger.pending[hash]) return { kind: "blocked", reason: "An identical extraction is already in progress." };
-      const totalCalls = Math.floor(configuredNumber(process.env.SERV_DEV_MAX_CALLS, DEFAULT_TOTAL_CALLS));
+      const shared = redisConfig() !== null;
+      const totalCalls = Math.floor(shared
+        ? configuredNumber(process.env.SERV_SHARED_MAX_CALLS, 0)
+        : configuredNumber(process.env.SERV_DEV_MAX_CALLS, DEFAULT_TOTAL_CALLS));
       const callLimit = finalDemo ? totalCalls : Math.max(0, totalCalls - RESERVED_CALLS);
       if (ledger.calls >= callLimit) {
         return { kind: "blocked", reason: finalDemo
@@ -305,7 +322,7 @@ export async function reserveServCall(
       return { kind: "allowed", reservation };
     });
   } catch {
-    return { kind: "blocked", reason: "The shared SERV budget could not be confirmed. No provider request was sent." };
+    return { kind: "blocked", unavailable: true, reason: "The shared SERV budget could not be confirmed. No provider request was sent." };
   }
 }
 

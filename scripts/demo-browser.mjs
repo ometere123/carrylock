@@ -126,6 +126,36 @@ try {
     await visit(page, route.path, route.heading);
     verified.routes[route.path] = 200;
     await capture(route.file);
+    if (route.path === "/app" && process.env.CARRYLOCK_CHECK_GUIDE === "1") {
+      const guide = page.getByRole("region", { name: "The missing relief valve" });
+      for (const shift of ["Shift A", "Shift B", "Shift C"]) {
+        await guide.getByRole("heading", { name: new RegExp(shift) }).waitFor();
+      }
+      const button = guide.getByRole("button", { name: "Run the guided synthetic review" });
+      await button.focus();
+      await page.keyboard.press("Enter");
+      await guide.getByRole("status").filter({ hasText: "Review ready" }).waitFor();
+      await guide.getByRole("link", { name: "Jump to review results" }).press("Enter");
+      assert.equal(new URL(page.url()).hash, "#review-results");
+      const historical = page.getByRole("region", { name: /SERV extracted both/ });
+      await historical.locator("summary").press("Space");
+      await historical.getByText(/chatcmpl-Eke4/).waitFor();
+      verified.guide = { keyboard: true, allThreeShifts: true, historicalCompletion: true };
+
+      if (process.env.CARRYLOCK_CHECK_DISABLED_CUSTOM === "1") {
+        const health = await (await page.request.get(new URL("/api/review", origin).href)).json();
+        assert.equal(health.liveEnabled, false);
+        const replay = await page.request.post(new URL("/api/review", origin).href, { data: { scenarioId: "closure-verified" } });
+        const { input } = await replay.json();
+        const custom = await page.request.post(new URL("/api/review", origin).href, { data: { input } });
+        assert.equal(custom.status(), 200);
+        const review = await custom.json();
+        assert.equal(review.receipt.extraction.serv.attempted, false);
+        assert.equal(review.receipt.extraction.serv.status, "disabled");
+        assert.equal(review.review.verdict, "REVIEW_REQUIRED");
+        verified.customDisabled = { verdict: review.review.verdict, providerStatus: review.receipt.extraction.serv.status };
+      }
+    }
     if (route.path === "/") {
       await page.screenshot({
         path: resolve(artifactDir, "landing-share.png"),

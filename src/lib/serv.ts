@@ -184,7 +184,7 @@ export async function extractWithServ(
   // Byte-per-token plus 4096 tokens of request framing is a conservative catalog estimate, not a billing guarantee.
   const reservedMicros = Buffer.byteLength(body, "utf8") + 4096 + 6 * MAX_COMPLETION_TOKENS;
   const reserved = await reserveServCall(hash, options.client ?? budgetClient(), Boolean(options.finalDemo), reservedMicros, SERV_MODEL, apiKey);
-  if (reserved.kind === "blocked") return failure(auditDefaults("rate_limited"), reserved.reason);
+  if (reserved.kind === "blocked") return failure(auditDefaults(reserved.unavailable ? "unavailable" : "rate_limited"), reserved.reason);
   if (reserved.kind === "cached") {
     const { result } = reserved;
     return {
@@ -200,8 +200,16 @@ export async function extractWithServ(
   }
 
   const result = await callProvider(input, body, apiKey, options.signal);
-  await settleServCall(hash, reserved.reservation, result, apiKey);
-  return result;
+  try {
+    await settleServCall(hash, reserved.reservation, result, apiKey);
+    return result;
+  } catch {
+    return {
+      ...result,
+      issues: [...result.issues, "The provider call was reserved, but its budget settlement could not be confirmed."],
+      audit: { ...result.audit, status: result.audit.status === "completed" ? "partial" : result.audit.status },
+    };
+  }
 }
 
 async function callProvider(input: ReviewInput, body: string, apiKey: string, requestSignal?: AbortSignal): Promise<ServResult> {
