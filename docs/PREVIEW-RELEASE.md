@@ -10,6 +10,12 @@ The existing Upstash Preview credentials are mapped on Vercel to `SERV_BUDGET_RE
 
 Chrome verified all four presets, the three-shift guide, keyboard operation, the historical SERV completion, fixture receipt download and mobile widths of 320 and 390 pixels. The ordinary disabled custom review returned REVIEW_REQUIRED and made no provider call. The static scan found zero matches to the actual private values across the tracked files, three public HTML routes and their script responses. [Browser results](browser-preview-closed.json)
 
+## Paid public Preview acceptance
+
+[Open the tested Preview](https://carrylock-qyxwa029z-delealufejoel-4184s-projects.vercel.app/app). It uses the same source commit and existing Upstash. The OpenServ console showed $0.79 remaining and 71 requests before the smoke. Vercel allowed exactly one ordinary slot by setting 77 lifetime slots with 5 reserved. The total accounting ceiling was $0.43 and the per-IP hourly limit was one.
+
+The anonymous custom review returned HTTP 200, completion ID `chatcmpl-Ekkiyg2K5WJDymaVgVnEdHh3fo7i3`, and `NO_CONFLICT_FOUND` for the synthetic closure case. Both shift excerpts matched their source offsets exactly. The JSON receipt downloaded in the browser and matched the completed review. The provider call took 3488 ms and used 1103 input and 383 output tokens. SERV did not report billed cost. The Redis accounting delta was $0.003401. Redis settled at 72 attempts, $0.409280 accounted and 0 pending reservations. The identical repeat reused the same completion without a provider call or ledger increment. [Paid evidence and receipt](preview-paid-acceptance.json)
+
 ## No-spend exhausted-quota check
 
 The real Redis-backed SERV admission code returned `rate_limited` and `REVIEW_REQUIRED` against an isolated key. The test copied the accounting floor of 71 calls and $0.405879, set 76 total slots including 5 reserved, and blocked all provider networking. It made zero provider calls, created zero reservation records, and left the active shared ledger byte-for-byte unchanged. The isolated test key expires after one hour. [Quota evidence](preview-paid-quota-test.json)
