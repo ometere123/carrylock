@@ -91,6 +91,7 @@ export function extractForWeb(input: ReviewInput, request: Request): Promise<Ser
   }
   return extractWithServ(input, apiKey, {
     client: budgetClient(request),
+    pipeline: "v2.2",
     finalDemo: reservedDemoAuthorized(request),
     signal: request.signal,
   });
@@ -179,6 +180,7 @@ export async function extractWithServ(
   apiKey: string,
   options: {
     client?: string; finalDemo?: boolean; signal?: AbortSignal;
+    pipeline?: Exclude<ServPipeline, "v3">;
     evaluation?: { pipeline: ServPipeline; runId: string };
   } = {},
 ): Promise<ServResult> {
@@ -188,12 +190,13 @@ export async function extractWithServ(
   if (options.signal?.aborted) {
     return failure(auditDefaults("unavailable"), "The review was cancelled before SERV extraction started.");
   }
-  const passages = options.evaluation?.pipeline === "v3" ? buildPassages(input) : null;
+  const pipeline = options.evaluation?.pipeline ?? options.pipeline ?? "v2";
+  const passages = pipeline === "v3" ? buildPassages(input) : null;
   if (passages && passages.length > 512) {
     return failure({ ...auditDefaults("partial"), promptVersion: PASSAGE_PROMPT_VERSION, schemaVersion: PASSAGE_SCHEMA_VERSION },
       "The candidate passage limit was exceeded. Extraction is incomplete.");
   }
-  const revised = options.evaluation?.pipeline === "v2.2";
+  const revised = pipeline === "v2.2";
   const promptVersion = passages ? PASSAGE_PROMPT_VERSION : revised ? REVISED_PROMPT_VERSION : PROMPT_VERSION;
   const schemaVersion = passages ? PASSAGE_SCHEMA_VERSION : SCHEMA_VERSION;
   const body = JSON.stringify({

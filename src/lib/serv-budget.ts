@@ -199,18 +199,6 @@ export function canEnforceLiveBudget(): boolean {
   }
 }
 
-export async function verifySharedBudget(): Promise<boolean> {
-  try {
-    const config = redisConfig();
-    if (!config || !canEnforceLiveBudget()) return false;
-    return await withRedisLedger(config, ledger =>
-      ledger.calls < Math.floor(configuredNumber(process.env.SERV_SHARED_MAX_CALLS, 0)) - RESERVED_CALLS &&
-      ledger.spendMicros < configuredNumber(process.env.SERV_MAX_SPEND_USD, DEFAULT_MAX_SPEND_USD) * 1_000_000);
-  } catch {
-    return false;
-  }
-}
-
 export async function inspectLocalEvaluationBudget() {
   if (process.env.VERCEL === "1" || redisConfig()) throw new Error("Local evaluation requires the locked local ledger.");
   return withLocalLedger(ledger => ({
