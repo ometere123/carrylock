@@ -25,7 +25,7 @@ No measured historical v1 row established a transport outage or a defect in dete
 
 The local runner uses the existing locked file ledger. It refuses live runs in CI or on a dirty checkout, checks the 18-attempt and $0.262480 historical floor, and requires an explicit USD ceiling constrained by a verified OpenServ credit allowance. For stacked reservations and deltas, consult the actual ledger after each run. Keep the existing path. Concurrent callers sharing one provider balance require the existing shared budget design.
 
-The console supplied by the operator showed $0.94 in credits, 18 requests and $0.06 billed. The local accounting record was preserved at 18 attempts and $0.262480 estimated or reserved. The local testing session sets a $0.50 additional maximum and a $0.762480 absolute accounting ceiling. The temporary ceiling of 60 lifetime attempts allows one smoke and up to three 12-case runs plus the five existing reserved slots. The session uses an hourly ceiling of 40 to permit the bounded local benchmark. These overrides apply only to evaluation processes.
+The console supplied by the operator showed $0.94 in credits, 18 requests and $0.06 billed. The local accounting record was preserved at 18 attempts and $0.262480 estimated or reserved. The local testing session sets a $0.50 additional maximum and a $0.762480 absolute accounting ceiling. The initial ceiling of 60 lifetime attempts allows one smoke and up to three 12-case runs plus the five existing reserved slots. The session initially used an hourly ceiling of 40. After the first comparison it authorized only the remaining targeted calls, two full revision runs and a local browser smoke, using ceilings of 76 lifetime and 57 hourly attempts. The USD ceiling stayed fixed. These overrides apply only to evaluation processes.
 
 From a committed checkout with the existing local credential and ledger, set the ceilings from the verified balance before running:
 
@@ -46,3 +46,23 @@ v3 is evaluation-only. It sends numbered passages, validates coverage and canoni
 A settlement failure leaves the original accounting reservation intact and returns a partial or unavailable result with an unconfirmed accounting flag. The duplicate fence remains after the in-flight timer expires. Resolve an expired unresolved reservation by reconciling the provider and store before allowing a retry. Keep the original charge reservation when the provider outcome cannot be confirmed.
 
 Production still needs a verified HTTPS Redis REST store that supports the existing GET, SET NX PX and EVAL operations, explicit usage ceilings, safe provider admission, and a fresh ordinary-user smoke. See the [shared-store configuration](POSTSUBMISSION.md#shared-redis-and-credit-reconciliation). Release also requires organizer permission and a passing live benchmark.
+
+
+## Measured recovery
+
+| Fresh 12-case suite | Strict | HTTP success | Complete | Grounded precision / recall | Exact identity / state / findings / verdict (of 12) | Unsafe clears / false holds | P50 / P95 ms | Input / output tokens | Catalog estimate |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| v2 full run | 10/12 | 100.0% | 83.3% | 100.0% / 86.4% | 10 / 10 / 10 / 12 | 0 / 0 | 1921 / 3077 | 13985 / 3189 | $0.033119 |
+| v3 full run | 6/12 | 100.0% | 50.0% | 100.0% / 77.3% | 7 / 10 / 6 / 10 | 0 / 0 | 1814 / 7493 | 11573 / 2814 | $0.028457 |
+| v2.2 full run 1 | 12/12 | 100.0% | 100.0% | 100.0% / 100.0% | 12 / 12 / 12 / 12 | 0 / 0 | 1922 / 2391 | 13229 / 3161 | $0.032195 |
+| v2.2 full run 2 | 12/12 | 100.0% | 100.0% | 100.0% / 100.0% | 12 / 12 / 12 / 12 | 0 / 0 | 2088 / 3102 | 13229 / 3530 | $0.034409 |
+
+The four suites, targeted tests and local browser smoke produced 53 authenticated HTTP 200 completions with distinct IDs and an estimated $0.143399. The duplicate browser request returned the same cached completion and made zero provider calls. No response supplied billed cost. The locked ledger ended at 71 attempts, $0.405879 accounted, and zero unresolved reservations. [Per-case JSON, completion IDs and browser receipt](serv-recovery-results.json)
+
+Current v2 missed a suspended permit after both returned quote values contained literal wrapper marks. The other miss omitted an explicitly unknown isolation and marked the shift partial. v3 rejected broader lines with multiple equipment mentions and additional clauses, and its coverage checks flagged incomplete or unsupported classification in six cases. It produced the lower strict score, even though all of its accepted grounded events matched the gold annotations.
+
+The narrow revisions were based on the two failed development cases. v2.1 passed the permit retest and recovered the expected isolation event, but also emitted an unsupported event from metadata. The targeted v2.2 isolation result still had a rejected extra event and remained REVIEW_REQUIRED. The same unchanged v2.2 prompt passed both full, fresh suites, including the held-out cases. The distribution therefore still includes a known targeted failure. The web route selects the measured v2.2 prompt. The v3 candidate remains available for evaluation.
+
+The ordinary localhost custom review showed both exact excerpts and downloaded the matching receipt at 390 px. Its advisory was NO_CONFLICT_FOUND and its settled completion took 2550 ms. The exact app source was `310979e6566f9013ad2cf81983123af216d884b2`. The submitted production health endpoint reported budgetReady=false. No public smoke is recorded.
+
+The final candidate passed npm ci, lint, typecheck, 44 offline tests, production build and engine evaluation. Chrome exercised the four presets, keyboard flow, mobile widths of 320 and 390 pixels, and fixture JSON receipt download. Fault-injection tests covered Redis reservation/settlement failures, duplicate fencing, concurrent admission, caching, insufficient budget, provider timeout and malformed response. The runtime dependency audit reported zero advisories. [Browser checks](browser-serv-recovery.json)

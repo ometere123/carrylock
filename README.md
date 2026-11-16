@@ -49,7 +49,7 @@ npm run build
 npm run eval:engine
 ```
 
-The test suite and `npm run eval:serv` run offline. The `--live` option requires verified provider credits and a shared budget. See the [post-submission evidence](docs/POSTSUBMISSION.md).
+The test suite and `npm run eval:serv` run offline. The `--live` option for synthetic evaluation requires verified provider credits and the locked local ledger. Public paid inference on Vercel requires shared Redis and its own enforced ceiling. See the [SERV recovery report](docs/SERV-RECOVERY.md).
 
 ## Usage controls
 
