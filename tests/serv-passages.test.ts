@@ -78,7 +78,7 @@ test("v3 requires coverage for each passage, including material passages labeled
   assert.equal(decodePassages(input, buildPassages(input), "{malformed"), null);
 });
 
-test("v2.1 removes only extraneous delimiters around a unique verbatim excerpt", () => {
+test("The revised pipeline removes only extraneous delimiters around a unique verbatim excerpt", () => {
   const notes = 'A permit is suspended. Another line.';
   assert.equal(recoverDelimitedQuote(notes, '"A permit is suspended."'), 'A permit is suspended.');
   assert.equal(recoverDelimitedQuote(notes, '"The permit is suspended."'), '"The permit is suspended."');

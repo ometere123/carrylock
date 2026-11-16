@@ -115,10 +115,10 @@ async function main() {
   const credits = Number(process.env.SERV_EVAL_VERIFIED_CREDITS_USD);
   const ceiling = Number(process.env.SERV_MAX_SPEND_USD);
   const pipelineOption = process.argv.find(arg => arg.startsWith("--pipeline="))?.slice(11) ?? "v2";
-  if (pipelineOption !== "v2" && pipelineOption !== "v2.1" && pipelineOption !== "v3") throw new Error("Unknown pipeline");
+  if (pipelineOption !== "v2" && pipelineOption !== "v2.2" && pipelineOption !== "v3") throw new Error("Unknown pipeline");
   const pipeline: ServPipeline = pipelineOption;
   const versions = pipeline === "v3" ? { promptVersion: PASSAGE_PROMPT_VERSION, schemaVersion: PASSAGE_SCHEMA_VERSION }
-    : pipeline === "v2.1" ? { promptVersion: REVISED_PROMPT_VERSION } : {};
+    : pipeline === "v2.2" ? { promptVersion: REVISED_PROMPT_VERSION } : {};
   const blockers = [];
   if (process.env.CI === "1" || process.env.CI === "true") blockers.push("CI cannot make metered requests.");
   if (dirty) blockers.push("Commit the evaluation source before running.");
